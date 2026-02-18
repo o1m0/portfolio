@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>HARU OBA │ Portfolio</title>
+  <meta name="description" content="ページの説明" />
+  <meta name="format-detection" content="telephone=no" />
+
+  <!-- favicon/webclipicon -->
+  <link rel="icon" href="favicon.ico" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="webclip.png" />
+
+  <!-- ogp -->
+  <meta property="og:site_name" content="サイト名" />
+  <meta property="og:url" content="URL" />
+  <meta property="og:type" content="website or article" />
+  <meta property="og:title" content="ページのタイトル" />
+  <meta property="og:description" content="ページの説明" />
+  <meta property="og:image" content="URL" />
+  <meta property="og:locale" content="ja_JP" />
+  <!-- <meta property="fb:app_id" content="AppID"> -->
+  <meta name="twitter:card" content="summary_large_image or summary" />
+  <!-- <meta name="twitter:site" content="@moshamusha2010" /> -->
+  <meta name="twitter:description" content="ページの説明" />
+  <meta name="twitter:image:src" content="URL" />
+
+  <!-- css -->
+  <link rel="stylesheet" href="css/style.css" />
+
+  <!-- js -->
+  <script src="js/vision-typing.js" defer></script>
+  <script src="js/selection-flash.js" defer></script>
+  <script src="js/skills-terminal.js" defer></script>
+  <script src="js/main.js" defer></script>
+  <script src="js/contact-terminal.js" defer></script>
+  <script src="js/nav-toggle.js" defer></script>
+  <script src="js/hero-terminal.js" defer></script>
+
+
+  <!-- google fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne+Mono&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bitcount+Grid+Double:wght@100..900&display=swap"
+    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=WDXL+Lubrifont+JP+N&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&display=swap" rel="stylesheet">
+
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+</head>
+
+<body>
+<header class="header">
+  <div class="header-shell">
+    <div class="header-inner">
+      <a href="#hero" class="header-logo">HARU OBA</a>
+
+      <!-- ✅ PC用 nav -->
+      <nav class="site-nav" aria-label="Primary">
+        <ul class="nav-list">
+          <li><a href="#about">About</a></li>
+          <li><a href="#vision">Vision</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+
+      <!-- ✅ ハンバーガー（SP用） -->
+      <button
+        class="nav-toggle"
+        type="button"
+        aria-label="Open menu"
+        aria-expanded="false"
+        aria-controls="spNav">
+        <span class="nav-toggle__bar"></span>
+        <span class="nav-toggle__bar"></span>
+        <span class="nav-toggle__bar"></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- ✅ overlay（SP用）: headerの外へ -->
+<div class="nav-overlay" data-nav-close></div>
+
+<!-- ✅ drawer（SP用）: headerの外へ -->
+<nav id="spNav" class="drawer" aria-label="Mobile menu" aria-hidden="true">
+  <button class="drawer-close" type="button" aria-label="Close menu" data-nav-close>×</button>
+
+  <ul class="drawer-list">
+    <li>
+      <a class="drawer-item" href="#hero" data-nav-link>
+        <span>TOP</span><i>›</i>
+      </a>
+    </li>
+
+    <li><a class="drawer-item" href="#about" data-nav-link><span>ABOUT</span><i>›</i></a></li>
+    <li><a class="drawer-item" href="#vision" data-nav-link><span>VISION</span><i>›</i></a></li>
+    <li><a class="drawer-item" href="#skills" data-nav-link><span>SKILLS</span><i>›</i></a></li>
+    <li><a class="drawer-item" href="#projects" data-nav-link><span>PROJECTS</span><i>›</i></a></li>
+    <li><a class="drawer-item" href="#contact" data-nav-link><span>CONTACT</span><i>›</i></a></li>
+  </ul>
+
+  <div class="drawer-sub">
+    <a class="sub-ico" href="mailto:yourmail@example.com" aria-label="Mail">
+      <i data-lucide="mail"></i>
+    </a>
+
+    <a class="sub-ico" href="https://github.com/yourname" target="_blank" rel="noopener" aria-label="GitHub">
+      <i data-lucide="github"></i>
+    </a>
+
+    <a class="sub-ico" href="https://x.com/yourname" target="_blank" rel="noopener" aria-label="X">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path
+          d="M18.9 2H22l-6.8 7.8L23 22h-6.5l-5.1-6.6L5.6 22H2.5l7.3-8.4L2 2h6.7l4.6 5.9L18.9 2Zm-1.1 18h1.7L7.6 3.9H5.7L17.8 20Z" />
+      </svg>
+    </a>
+  </div>
+</nav>
+
+
+
+
+  <main>
+<section id="hero" class="hero-terminal">
+  <div class="heroT-inner">
+
+    <div class="heroT-badge">
+      <span class="dot"></span>
+      <span>BOOT SEQUENCE</span>
+    </div>
+
+    <h1 class="heroT-title" aria-label="HARU OBA">
+      <span class="glitch" data-text="HARU">HARU</span>
+      <span class="glitch" data-text="OBA">OBA</span>
+    </h1>
+
+    <div class="heroT-panel">
+      <div class="heroT-line">
+        <span class="prompt">haru@portfolio</span><span class="sep">:</span><span class="path">~</span><span class="sep">$</span>
+        <span id="typeTarget" class="typed"></span><span class="caret" aria-hidden="true"></span>
+      </div>
+
+      <div class="heroT-output" id="output">
+        <p><span class="k">role</span>: Web × AI Product Engineer</p>
+        <p><span class="k">focus</span>: building products, shipping fast</p>
+        <p><span class="k">status</span>: available for internships / projects</p>
+      </div>
+
+      <div class="heroT-actions">
+        <a class="btn" href="#projects">View Projects</a>
+        <a class="btn ghost" href="#contact">Contact</a>
+      </div>
+    </div>
+
+    <p class="heroT-hint">Try typing: <code>help</code>, <code>projects</code>, <code>contact</code></p>
+
+  </div>
+</section>
+
+
+
+    <section id="about">
+      <div class="about-inner">
+        <h2 class="light-title">ABOUT ME</h2>
+        <div class="about-grid">
+          <div class="about-text">
+            <div class="about-intro">
+              <p>大阪工業大学 情報科学部に在籍。 Web開発を中心に、AIや機械学習の分野にも興味を持ち、日々技術の習得に励んでいます。</p>
+              <p>現在はフロントエンド技術を基盤に、AIを活用したアプリケーション開発に取り組んでいます。</p>
+              <p>Gitを用いたバージョン管理や継続的な改善を通して、実践的な開発力を磨いています。</p>
+            </div>
+            <div class="about-career">
+              <h3 class="light-title">Career</h3>
+              <ul class="career-list">
+                <li>2021年：神戸市立科学技術高等学校入学</li>
+                <li>2024年：大阪工業大学 情報科学部入学</li>
+                <li>2025年：個人開発に挑戦</li>
+                <li>2026年：ポートフォリオサイト制作</li>
+              </ul>
+            </div>
+            <div class="about-achievements">
+              <h3 class="light-title gold-title">Achievements</h3>
+              <ul class="achievement-list">
+                <li>ジャパンマイコンカーラリー近畿地区大会 3連覇</li>
+                <li>ジャパンマイコンカーラリー2024全国大会 CameraClass 優勝</li>
+                <li>神戸市児童生徒表彰 受賞</li>
+                <li>マイクロマウス関西地区大会 特別賞</li>
+                <li>全日本マイクロマウス大会 特別賞</li>
+              </ul>
+            </div>
+          </div>
+
+          <aside class="about-right">
+            <div class="profile-card">
+              <div class="profile-top">
+                <div class="avatar"><img src="./images/profile.jpg" alt="Haru Oba"></div>
+                <div class="profile-meta">
+                  <p class="profile-name">HARU OBA</p>
+                  <p class="profile-role">Web × AI Product Engineer</p>
+                </div>
+              </div>
+              <ul class="profile-list">
+                <li><span>Focus</span> Frontend / Product</li>
+                <li><span>AI</span> Python / ML basics</li>
+                <li><span>Tools</span> Git / GitHub</li>
+                <li><span>Now</span> Portfolio / Personal Dev</li>
+              </ul>
+              <div class="profile-links">
+                <a class="profile-btn" href="#projects">View Projects</a>
+                <a class="profile-btn ghost" href="#contact">Contact</a>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section id="vision">
+      <div class="section-inner">
+        <div class="light-title">
+          <h2>Vision</h2>
+        </div>
+
+        <div class="vision-grid">
+          <div class="vision-text">
+            <p>機能を実装するだけのエンジニアではなく、「なぜそれを作るのか」から設計できるプロダクトエンジニアを目指しています。</p>
+            <p>WebとAIを武器に、人の行動や選択に影響を与える体験を創り出し、本質的な価値を届けられる存在へと成長していきます。</p>
+          </div>
+
+          <aside class="vision-side">
+            <div class="terminal-box" aria-live="polite">
+              <span class="terminal-prefix">&gt;</span>
+              <span id="vision-typing" class="terminal-text">
+                4つのキーワードにカーソルを置いてください
+              </span>
+            </div>
+
+            <ul class="vision-pill-grid">
+              <li class="pill" data-text="常識や前例からではなく、“ワクワクする未来”から逆算して設計する。">
+                Future Driven Design
+              </li>
+
+              <li class="pill" data-text="Webの体験設計とAIの可能性を融合させ、人の感情を動かすプロダクトを創る。">
+                Web × AI Fusion
+              </li>
+
+              <li class="pill" data-text="触れた瞬間に“面白い”と感じる体験を最優先に設計する。">
+                Experience First
+              </li>
+
+              <li class="pill" data-text="仮説→実装→破壊→再構築。止まらず進化し続ける。">
+                Build. Break. Evolve.
+              </li>
+            </ul>
+
+            <div class="vision-mini">
+              <p class="vision-mini-title">Current Focus</p>
+              <p class="vision-mini-text">
+                UI / Frontend を中心に基礎力を高めながら、AI活用の実装にも取り組んでいます。
+              </p>
+
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+    <section id="skills">
+        <div class="section-head">
+    <h2 class="light-title">SKILLS</h2>
+    <p class="section-sub">Technical Stack & Capability</p>
+  </div>
+      <div class="skills-terminal">
+        <div class="t-head">
+          <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+          <span class="t-title">terminal://skills</span>
+        </div>
+
+        <div class="t-grid">
+          <!-- 左：ターミナル -->
+          <div class="t-main">
+            <div id="t-output" class="t-output" aria-live="polite"></div>
+
+            <div class="t-prompt">
+              <span class="t-prefix">&gt;</span>
+              <input id="t-input" class="t-input" type="text" autocomplete="off" spellcheck="false"
+                placeholder="help / skills / clear" />
+            </div>
+
+            <div class="t-hint">
+              <span>Tip:</span> Enterで実行 / ↑↓で履歴 / hoverで詳細
+              <p class="t-guide">
+                初めての方へ：<span class="t-cmd">skills</span> と入力して Enter を押すと一覧が表示されます。
+              </p>
+            </div>
+          </div>
+
+
+          <!-- 右：ホバー説明 -->
+          <aside class="t-side">
+            <div class="t-side-card">
+              <p class="t-side-title">Details</p>
+              <p id="t-side-text" class="t-side-text">
+                左のスキルにカーソルを置くと、ここに説明が表示されます。
+              </p>
+            </div>
+          </aside>
+        </div>
+      </div>
+
+    </section>
+
+
+    <section id="projects" class="p-projects">
+      <div class="p-head">
+        <h2 class="p-title light-title">Projects</h2>
+        <p class="p-lead">個人開発・制作物の一部です。</p>
+      </div>
+
+      <div class="p-carousel" id="projectsCarousel">
+        <button class="p-nav p-prev" type="button" aria-label="Previous">‹</button>
+
+        <div class="p-track">
+          <article class="p-card">
+            <div class="p-thumb"><img src="images/projects/portfolio.webp" alt="Project 1 thumbnail"></div>
+            <div class="p-meta">
+              <h3 class="p-card-title">Portfolio WebSite</h3>
+              <p class="p-desc">My Portfolio WebSite</p>
+              <div class="p-chips">
+                <span class="p-chip">HTML</span><span class="p-chip">CSS</span><span class="p-chip">JS</span>
+              </div>
+              <div class="p-actions">
+                <a class="p-btn p-primary" href="#" target="_blank" rel="noopener">View</a>
+                <a class="p-btn p-ghost" href="#" target="_blank" rel="noopener">GitHub</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="p-card">
+            <div class="p-thumb"><img src="thumb2.jpg" alt="Project 2 thumbnail"></div>
+            <div class="p-meta">
+              <h3 class="p-card-title">Project Title 02</h3>
+              <p class="p-desc">一言説明。工夫した点や機能。</p>
+              <div class="p-chips">
+                <span class="p-chip">UI</span><span class="p-chip">API</span>
+              </div>
+              <div class="p-actions">
+                <a class="p-btn p-primary" href="#" target="_blank" rel="noopener">View</a>
+                <a class="p-btn p-ghost" href="#" target="_blank" rel="noopener">GitHub</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="p-card">
+            <div class="p-thumb"><img src="thumb3.jpg" alt="Project 3 thumbnail"></div>
+            <div class="p-meta">
+              <h3 class="p-card-title">Project Title 03</h3>
+              <p class="p-desc">一言説明。どんな価値があるか。</p>
+              <div class="p-chips">
+                <span class="p-chip">Python</span><span class="p-chip">ML</span>
+              </div>
+              <div class="p-actions">
+                <a class="p-btn p-primary" href="#" target="_blank" rel="noopener">View</a>
+                <a class="p-btn p-ghost" href="#" target="_blank" rel="noopener">GitHub</a>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <button class="p-nav p-next" type="button" aria-label="Next">›</button>
+      </div>
+
+      <div class="p-dots" id="projectsDots" aria-label="carousel dots"></div>
+    </section>
+
+
+    <section id="contact" class="area contact-area contact-terminal">
+      <div class="contact-terminal-wrap">
+        <h2 class="section-title contact-title">
+  <span class="prompt-symbol">&gt;</span>
+  <span class="contact-word">contact</span>
+</h2>
+<p class="contact-sub">establish_connection</p>
+
+
+        <div class="terminal">
+          <div class="terminal-bar">
+            <span class="dot red"></span>
+            <span class="dot yellow"></span>
+            <span class="dot green"></span>
+            <span class="terminal-title">secure-shell — contact</span>
+          </div>
+
+          <div class="terminal-body" aria-live="polite">
+            <p class="line">
+              <span class="prompt">&gt;</span>
+              <span id="cmd"></span>
+              <span class="caret"></span>
+            </p>
+
+            <p class="line dim" id="status"></p>
+
+
+            <div class="terminal-links" id="links" hidden>
+
+              <a class="tlink mail" href="mailto:your@email.com">
+                <span class="icon"><i data-lucide="mail"></i></span>
+                <span class="k">Email</span>
+                <span class="v">your@email.com</span>
+                <span class="arrow">↗</span>
+              </a>
+
+              <a class="tlink github" href="https://github.com/yourname" target="_blank">
+                <span class="icon"><i data-lucide="github"></i></span>
+                <span class="k">GitHub</span>
+                <span class="v">github.com/yourname</span>
+                <span class="arrow">↗</span>
+              </a>
+
+<a class="tlink x" href="https://x.com/yourname" target="_blank">
+  <span class="icon">
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M18.244 2H21l-6.56 7.5L22 22h-6.8l-5.33-6.97L4.2 22H1.44l7.02-8.02L2 2h6.93l4.83 6.33L18.244 2Zm-1.19 18h1.9L7.01 4h-2L17.054 20Z"/>
+    </svg>
+  </span>
+  <span class="k">X</span>
+  <span class="v">@yourname</span>
+  <span class="arrow">↗</span>
+</a>
+
+              <a class="tlink linkedin" href="https://linkedin.com/in/yourname" target="_blank">
+                <span class="icon"><i data-lucide="linkedin"></i></span>
+                <span class="k">LinkedIn</span>
+                <span class="v">linkedin.com/in/yourname</span>
+                <span class="arrow">↗</span>
+              </a>
+
+              <a class="tlink qiita" href="https://qiita.com/yourname" target="_blank">
+                <span class="icon"><i data-lucide="book-open"></i></span>
+                <span class="k">Qiita</span>
+                <span class="v">qiita.com/yourname</span>
+                <span class="arrow">↗</span>
+              </a>
+
+              <a class="tlink zenn" href="https://zenn.dev/yourname" target="_blank">
+                <span class="icon"><i data-lucide="edit-3"></i></span>
+                <span class="k">Zenn</span>
+                <span class="v">zenn.dev/yourname</span>
+                <span class="arrow">↗</span>
+              </a>
+
+            </div>
+
+            <div class="terminal-actions" id="actions" hidden>
+              <button class="tbtn" type="button" id="replayBtn">Reconnect</button>
+
+              <label class="sound-toggle">
+                <input type="checkbox" id="soundToggle">
+                <span>Sound</span>
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <!-- left -->
+      <div class="footer-brand">
+        <a class="footer-logo" href="#hero">HARU OBA</a>
+        <p class="footer-tagline">
+          Building products with code.<br />
+          Web / UI / Engineering
+        </p>
+
+        <div class="footer-social">
+          <!-- X -->
+          <a class="social-btn" href="#" target="_blank" rel="noopener" aria-label="X (Twitter)">
+            <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+              <path fill="currentColor"
+                d="M18.9 2H22l-6.8 7.8L23 22h-6.5l-5.1-6.6L5.6 22H2.5l7.3-8.4L2 2h6.7l4.6 5.9L18.9 2Zm-1.1 18h1.7L7.6 3.9H5.7L17.8 20Z" />
+            </svg>
+            <span>X</span>
+          </a>
+
+          <!-- GitHub -->
+          <a class="social-btn" href="#" target="_blank" rel="noopener" aria-label="GitHub">
+            <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+              <path fill="currentColor"
+                d="M12 .5A11.5 11.5 0 0 0 8.4 22.9c.6.1.8-.3.8-.6v-2.2c-3.2.7-3.9-1.3-3.9-1.3-.5-1.2-1.2-1.6-1.2-1.6-1-.7.1-.7.1-.7 1.1.1 1.7 1.1 1.7 1.1 1 1.7 2.7 1.2 3.4.9.1-.7.4-1.2.7-1.5-2.6-.3-5.3-1.3-5.3-5.9 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.3 1.2a11.4 11.4 0 0 1 6 0C18.6 4.9 19.6 5.2 19.6 5.2c.6 1.6.2 2.8.1 3.1.8.8 1.2 1.9 1.2 3.2 0 4.6-2.7 5.6-5.3 5.9.4.4.8 1.1.8 2.2v3.2c0 .3.2.7.8.6A11.5 11.5 0 0 0 12 .5Z" />
+            </svg>
+            <span>GitHub</span>
+          </a>
+
+          <!-- Email -->
+          <a class="social-btn" href="mailto:yourmail@example.com" aria-label="Email">
+            <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+              <path fill="currentColor"
+                d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Zm0 4-8 5L4 8V6l8 5 8-5v2Z" />
+            </svg>
+            <span>Email</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- right -->
+      <div class="footer-nav">
+        <div class="footer-col">
+          <p class="footer-head">Navigate</p>
+          <a href="#about">About</a>
+          <a href="#vision">Vision</a>
+          <a href="#skills">Skills</a>
+          <a href="#projects">Projects</a>
+        </div>
+
+        <div class="footer-col">
+          <p class="footer-head">Contact</p>
+          <a href="mailto:yourmail@example.com">yourmail@example.com</a>
+          <a href="#" target="_blank" rel="noopener">X / Twitter</a>
+          <a href="#" target="_blank" rel="noopener">GitHub</a>
+        </div>
+
+        <div class="footer-col footer-cta">
+          <p class="footer-head">Message</p>
+          <p class="footer-note">
+            お仕事・共同開発・相談など、気軽にどうぞ。
+          </p>
+          <a class="footer-cta-btn" href="mailto:yourmail@example.com">
+            Send Email →
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <small>
+        © <span id="footerYear"></span> HARU OBA.
+        This site was designed and implemented by myself,
+        with AI-assisted development support.
+      </small>
+
+      <a class="to-top" href="#hero" aria-label="Back to top">↑</a>
+    </div>
+  </footer>
+  <script>
+    lucide.createIcons();
+    document.getElementById("footerYear").textContent = new Date().getFullYear();
+  </script>
+</body>
+
+</html>
