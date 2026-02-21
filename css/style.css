@@ -1735,7 +1735,7 @@ body.nav-open .drawer{
 /* =========================
    Contact - Terminal
 ========================= */
-.contact-terminal{
+.sns-terminal{
   display: flex;
   justify-content: center;
   align-items: flex-start;
@@ -1743,11 +1743,11 @@ body.nav-open .drawer{
 }
 
 /* アンカーで飛ぶ位置も安定 */
-#contact{
+#sns{
   scroll-margin-top: calc(var(--header-h) + 30px);
 }
 
-.contact-terminal-wrap {
+.sns-terminal-wrap {
   width: 100%;
   max-width: 1000px;
   text-align: center;
@@ -1940,6 +1940,12 @@ body.nav-open .drawer{
   stroke-width: 1.8;
 }
 
+.icon img {
+  width: 18px;
+  height: 18px;
+  display: block;
+}
+
 .tlink:hover .icon {
   color: rgba(74,198,255,1);
   filter: drop-shadow(0 0 6px rgba(74,198,255,0.6));
@@ -1947,6 +1953,7 @@ body.nav-open .drawer{
 
 /* ===== SNS Default Brand Colors ===== */
 .tlink.github .icon { color: #ffffff; }
+.tlink.instagram .icon { color: #E4405F; }
 .tlink.x .icon { color: #ffffff; }
 .tlink.linkedin .icon { color: #0A66C2; }
 .tlink.qiita .icon { color: #55C500; }
@@ -2433,7 +2440,7 @@ margin-right: 0;   }
 ========================= */
 
 /* 1) wrapperの余白と最大幅を安全に */
-.contact-terminal-wrap{
+.sns-terminal-wrap{
   width: min(1000px, 92vw);
   margin: 0 auto;
   padding: 0 0; /* ここは既に別で管理してるなら触らなくてOK */
@@ -2593,7 +2600,7 @@ margin-right: 0;   }
 /* =========================
    Contact Title: Terminal + Elegant line
 ========================= */
-.contact-title{
+.sns-title{
   /* terminal feel */
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   font-size: clamp(34px, 5.5vw, 56px);
@@ -2615,14 +2622,14 @@ margin-right: 0;   }
 }
 
 /* prompt ">" */
-.contact-title .prompt-symbol{
+.sns-title .prompt-symbol{
   color: rgba(74,198,255,.92);
   text-shadow: 0 0 12px rgba(74,198,255,.65);
   transform: translateY(-1px);
 }
 
 /* subtle elegant line (B要素) */
-.contact-title::after{
+.sns-title::after{
   content:"";
   position:absolute;
   left: 50%;
@@ -2645,16 +2652,16 @@ margin-right: 0;   }
 
 /* mobile tuning */
 @media (max-width: 600px){
-  .contact-title{
+  .sns-title{
     font-size: clamp(28px, 7vw, 44px);
     margin-bottom: 18px;
   }
-  .contact-title::after{
+  .sns-title::after{
     bottom: -10px;
     width: min(160px, 70vw);
   }
 }
-.contact-sub{
+.sns-sub{
   margin: 6px 0 22px;
   font-size: 12px;
   letter-spacing: .18em;

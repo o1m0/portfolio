@@ -1,9 +1,9 @@
-(() => {
+﻿(() => {
   const target = document.getElementById("typeTarget");
   const output = document.getElementById("output");
   if (!target || !output) return;
 
-  const queue = ["help", "projects", "contact"];
+  const queue = ["help", "projects", "sns"];
 
   let current = "";
   let idx = 0;
@@ -12,22 +12,26 @@
 
   const responses = {
     help: [
-      "commands: help / projects / contact",
+      "commands: help / projects / sns",
       "tip: press Enter after typing"
     ],
     projects: [
-      "opening #projects …",
+      "opening #projects ...",
       "hint: scroll or click View Projects"
     ],
-    contact: [
-      "opening #contact …",
+    sns: [
+      "opening #sns ...",
       "hint: send a message anytime"
+    ],
+    contact: [
+      "opening #sns ...",
+      "hint: alias: use sns"
     ]
   };
 
   function print(lines) {
     const frag = document.createDocumentFragment();
-    lines.forEach(text => {
+    lines.forEach((text) => {
       const p = document.createElement("p");
       p.innerHTML = `<span class="k">out</span>: ${text}`;
       frag.appendChild(p);
@@ -72,7 +76,7 @@
     if (responses[cmd]) {
       print(responses[cmd]);
       if (cmd === "projects") location.hash = "#projects";
-      if (cmd === "contact") location.hash = "#contact";
+      if (cmd === "sns" || cmd === "contact") location.hash = "#sns";
     } else {
       print([`unknown command: ${cmd}`]);
     }

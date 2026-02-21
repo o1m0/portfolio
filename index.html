@@ -5,27 +5,33 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>HARU OBA │ Portfolio</title>
-  <meta name="description" content="ページの説明" />
+
+  <!-- SEO -->
+  <meta name="description" content="HARU OBA（大庭羽流）のポートフォリオ。Web開発とAIを活用したプロダクト制作をしています。" />
+  <meta name="theme-color" content="#000000" />
+  <link rel="canonical" href="https://portfolio.0ba.dev/" />
   <meta name="format-detection" content="telephone=no" />
 
-  <!-- favicon/webclipicon -->
-  <link rel="icon" href="favicon.ico" />
-  <link rel="icon" href="favicon.svg" type="image/svg+xml">
-  <link rel="apple-touch-icon" href="webclip.png" />
+  <!-- favicon / webclip -->
+  <link rel="icon" href="/images/favicon/favicon.ico">
+  <link rel="icon" type="image/svg+xml" href="/images/favicon/favicon.svg">
+  <link rel="apple-touch-icon" href="/images/favicon/apple-touch-icon.png">
 
-  <!-- ogp -->
-  <meta property="og:site_name" content="サイト名" />
-  <meta property="og:url" content="URL" />
-  <meta property="og:type" content="website or article" />
-  <meta property="og:title" content="ページのタイトル" />
-  <meta property="og:description" content="ページの説明" />
-  <meta property="og:image" content="URL" />
+
+  <!-- OGP -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="HARU OBA" />
+  <meta property="og:url" content="https://portfolio.0ba.dev/" />
+  <meta property="og:title" content="HARU OBA │ Web × AI Product Engineer" />
+  <meta property="og:description" content="HARU OBA（大庭羽流）のポートフォリオ。Web開発とAIを活用したプロダクト制作をしています。" />
+  <meta property="og:image" content="https://portfolio.0ba.dev/images/favicons/ogp.png" />
   <meta property="og:locale" content="ja_JP" />
-  <!-- <meta property="fb:app_id" content="AppID"> -->
-  <meta name="twitter:card" content="summary_large_image or summary" />
-  <!-- <meta name="twitter:site" content="@moshamusha2010" /> -->
-  <meta name="twitter:description" content="ページの説明" />
-  <meta name="twitter:image:src" content="URL" />
+
+  <!-- Twitter Card（X） -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="HARU OBA │ Web × AI Product Engineer" />
+  <meta name="twitter:description" content="HARU OBA（大庭羽流）のポートフォリオ。Web開発とAIを活用したプロダクト制作をしています。" />
+  <meta name="twitter:image" content="https://portfolio.0ba.dev/images/favicons/ogp.png" />
 
   <!-- css -->
   <link rel="stylesheet" href="css/style.css" />
@@ -35,7 +41,7 @@
   <script src="js/selection-flash.js" defer></script>
   <script src="js/skills-terminal.js" defer></script>
   <script src="js/main.js" defer></script>
-  <script src="js/contact-terminal.js" defer></script>
+  <script src="js/sns-terminal.js" defer></script>
   <script src="js/nav-toggle.js" defer></script>
   <script src="js/hero-terminal.js" defer></script>
 
@@ -56,115 +62,111 @@
 </head>
 
 <body>
-<header class="header">
-  <div class="header-shell">
-    <div class="header-inner">
-      <a href="#hero" class="header-logo">HARU OBA</a>
+  <header class="header">
+    <div class="header-shell">
+      <div class="header-inner">
+        <a href="#hero" class="header-logo">HARU OBA</a>
 
-      <!-- ✅ PC用 nav -->
-      <nav class="site-nav" aria-label="Primary">
-        <ul class="nav-list">
-          <li><a href="#about">About</a></li>
-          <li><a href="#vision">Vision</a></li>
-          <li><a href="#skills">Skills</a></li>
-          <li><a href="#projects">Projects</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </nav>
+        <!-- ✅ PC用 nav -->
+        <nav class="site-nav" aria-label="Primary">
+          <ul class="nav-list">
+            <li><a href="#about">About</a></li>
+            <li><a href="#vision">Vision</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#sns">SNS</a></li>
+          </ul>
+        </nav>
 
-      <!-- ✅ ハンバーガー（SP用） -->
-      <button
-        class="nav-toggle"
-        type="button"
-        aria-label="Open menu"
-        aria-expanded="false"
-        aria-controls="spNav">
-        <span class="nav-toggle__bar"></span>
-        <span class="nav-toggle__bar"></span>
-        <span class="nav-toggle__bar"></span>
-      </button>
+        <!-- ✅ ハンバーガー（SP用） -->
+        <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="spNav">
+          <span class="nav-toggle__bar"></span>
+          <span class="nav-toggle__bar"></span>
+          <span class="nav-toggle__bar"></span>
+        </button>
+      </div>
     </div>
-  </div>
-</header>
+  </header>
 
-<!-- ✅ overlay（SP用）: headerの外へ -->
-<div class="nav-overlay" data-nav-close></div>
+  <!-- ✅ overlay（SP用）: headerの外へ -->
+  <div class="nav-overlay" data-nav-close></div>
 
-<!-- ✅ drawer（SP用）: headerの外へ -->
-<nav id="spNav" class="drawer" aria-label="Mobile menu" aria-hidden="true">
-  <button class="drawer-close" type="button" aria-label="Close menu" data-nav-close>×</button>
+  <!-- ✅ drawer（SP用）: headerの外へ -->
+  <nav id="spNav" class="drawer" aria-label="Mobile menu" aria-hidden="true">
+    <button class="drawer-close" type="button" aria-label="Close menu" data-nav-close>×</button>
 
-  <ul class="drawer-list">
-    <li>
-      <a class="drawer-item" href="#hero" data-nav-link>
-        <span>TOP</span><i>›</i>
+    <ul class="drawer-list">
+      <li>
+        <a class="drawer-item" href="#hero" data-nav-link>
+          <span>TOP</span><i>›</i>
+        </a>
+      </li>
+
+      <li><a class="drawer-item" href="#about" data-nav-link><span>ABOUT</span><i>›</i></a></li>
+      <li><a class="drawer-item" href="#vision" data-nav-link><span>VISION</span><i>›</i></a></li>
+      <li><a class="drawer-item" href="#skills" data-nav-link><span>SKILLS</span><i>›</i></a></li>
+      <li><a class="drawer-item" href="#projects" data-nav-link><span>PROJECTS</span><i>›</i></a></li>
+      <li><a class="drawer-item" href="#sns" data-nav-link><span>SNS</span><i>›</i></a></li>
+    </ul>
+
+    <div class="drawer-sub">
+      <a class="sub-ico" href="mailto:yourmail@example.com" aria-label="Mail">
+        <i data-lucide="mail"></i>
       </a>
-    </li>
 
-    <li><a class="drawer-item" href="#about" data-nav-link><span>ABOUT</span><i>›</i></a></li>
-    <li><a class="drawer-item" href="#vision" data-nav-link><span>VISION</span><i>›</i></a></li>
-    <li><a class="drawer-item" href="#skills" data-nav-link><span>SKILLS</span><i>›</i></a></li>
-    <li><a class="drawer-item" href="#projects" data-nav-link><span>PROJECTS</span><i>›</i></a></li>
-    <li><a class="drawer-item" href="#contact" data-nav-link><span>CONTACT</span><i>›</i></a></li>
-  </ul>
+      <a class="sub-ico" href="https://github.com/yourname" target="_blank" rel="noopener" aria-label="GitHub">
+        <i data-lucide="github"></i>
+      </a>
 
-  <div class="drawer-sub">
-    <a class="sub-ico" href="mailto:yourmail@example.com" aria-label="Mail">
-      <i data-lucide="mail"></i>
-    </a>
-
-    <a class="sub-ico" href="https://github.com/yourname" target="_blank" rel="noopener" aria-label="GitHub">
-      <i data-lucide="github"></i>
-    </a>
-
-    <a class="sub-ico" href="https://x.com/yourname" target="_blank" rel="noopener" aria-label="X">
-      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-        <path
-          d="M18.9 2H22l-6.8 7.8L23 22h-6.5l-5.1-6.6L5.6 22H2.5l7.3-8.4L2 2h6.7l4.6 5.9L18.9 2Zm-1.1 18h1.7L7.6 3.9H5.7L17.8 20Z" />
-      </svg>
-    </a>
-  </div>
-</nav>
+      <a class="sub-ico" href="https://x.com/yourname" target="_blank" rel="noopener" aria-label="X">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path
+            d="M18.9 2H22l-6.8 7.8L23 22h-6.5l-5.1-6.6L5.6 22H2.5l7.3-8.4L2 2h6.7l4.6 5.9L18.9 2Zm-1.1 18h1.7L7.6 3.9H5.7L17.8 20Z" />
+        </svg>
+      </a>
+    </div>
+  </nav>
 
 
 
 
   <main>
-<section id="hero" class="hero-terminal">
-  <div class="heroT-inner">
+    <section id="hero" class="hero-terminal">
+      <div class="heroT-inner">
 
-    <div class="heroT-badge">
-      <span class="dot"></span>
-      <span>BOOT SEQUENCE</span>
-    </div>
+        <div class="heroT-badge">
+          <span class="dot"></span>
+          <span>BOOT SEQUENCE</span>
+        </div>
 
-    <h1 class="heroT-title" aria-label="HARU OBA">
-      <span class="glitch" data-text="HARU">HARU</span>
-      <span class="glitch" data-text="OBA">OBA</span>
-    </h1>
+        <h1 class="heroT-title" aria-label="HARU OBA">
+          <span class="glitch" data-text="HARU">HARU</span>
+          <span class="glitch" data-text="OBA">OBA</span>
+        </h1>
 
-    <div class="heroT-panel">
-      <div class="heroT-line">
-        <span class="prompt">haru@portfolio</span><span class="sep">:</span><span class="path">~</span><span class="sep">$</span>
-        <span id="typeTarget" class="typed"></span><span class="caret" aria-hidden="true"></span>
+        <div class="heroT-panel">
+          <div class="heroT-line">
+            <span class="prompt">haru@portfolio</span><span class="sep">:</span><span class="path">~</span><span
+              class="sep">$</span>
+            <span id="typeTarget" class="typed"></span><span class="caret" aria-hidden="true"></span>
+          </div>
+
+          <div class="heroT-output" id="output">
+            <p><span class="k">role</span>: Web × AI Product Engineer</p>
+            <p><span class="k">focus</span>: building products, shipping fast</p>
+            <p><span class="k">status</span>: available for internships / projects</p>
+          </div>
+
+          <div class="heroT-actions">
+            <a class="btn" href="#projects">View Projects</a>
+            <a class="btn ghost" href="#sns">SNS</a>
+          </div>
+        </div>
+
+        <p class="heroT-hint">Try typing: <code>help</code>, <code>projects</code>, <code>sns</code></p>
+
       </div>
-
-      <div class="heroT-output" id="output">
-        <p><span class="k">role</span>: Web × AI Product Engineer</p>
-        <p><span class="k">focus</span>: building products, shipping fast</p>
-        <p><span class="k">status</span>: available for internships / projects</p>
-      </div>
-
-      <div class="heroT-actions">
-        <a class="btn" href="#projects">View Projects</a>
-        <a class="btn ghost" href="#contact">Contact</a>
-      </div>
-    </div>
-
-    <p class="heroT-hint">Try typing: <code>help</code>, <code>projects</code>, <code>contact</code></p>
-
-  </div>
-</section>
+    </section>
 
 
 
@@ -216,7 +218,7 @@
               </ul>
               <div class="profile-links">
                 <a class="profile-btn" href="#projects">View Projects</a>
-                <a class="profile-btn ghost" href="#contact">Contact</a>
+                <a class="profile-btn ghost" href="#sns">SNS</a>
               </div>
             </div>
           </aside>
@@ -274,10 +276,10 @@
       </div>
     </section>
     <section id="skills">
-        <div class="section-head">
-    <h2 class="light-title">SKILLS</h2>
-    <p class="section-sub">Technical Stack & Capability</p>
-  </div>
+      <div class="section-head">
+        <h2 class="light-title">SKILLS</h2>
+        <p class="section-sub">Technical Stack & Capability</p>
+      </div>
       <div class="skills-terminal">
         <div class="t-head">
           <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
@@ -339,7 +341,8 @@
               </div>
               <div class="p-actions">
                 <a class="p-btn p-primary" href="#" target="_blank" rel="noopener">View</a>
-                <a class="p-btn p-ghost" href="https://github.com/O1M0/portfolio" target="_blank" rel="noopener">GitHub</a>
+                <a class="p-btn p-ghost" href="https://github.com/O1M0/portfolio" target="_blank"
+                  rel="noopener">GitHub</a>
               </div>
             </div>
           </article>
@@ -382,13 +385,13 @@
     </section>
 
 
-    <section id="contact" class="area contact-area contact-terminal">
-      <div class="contact-terminal-wrap">
-        <h2 class="section-title contact-title">
-  <span class="prompt-symbol">&gt;</span>
-  <span class="contact-word">contact</span>
-</h2>
-<p class="contact-sub">establish_connection</p>
+    <section id="sns" class="area sns-area sns-terminal">
+      <div class="sns-terminal-wrap">
+        <h2 class="section-title sns-title">
+          <span class="prompt-symbol">&gt;</span>
+          <span class="sns-word">SocialMedia</span>
+        </h2>
+        <p class="sns-sub">establish_connection</p>
 
 
         <div class="terminal">
@@ -396,7 +399,7 @@
             <span class="dot red"></span>
             <span class="dot yellow"></span>
             <span class="dot green"></span>
-            <span class="terminal-title">secure-shell — contact</span>
+            <span class="terminal-title">secure-shell — sns</span>
           </div>
 
           <div class="terminal-body" aria-live="polite">
@@ -411,32 +414,52 @@
 
             <div class="terminal-links" id="links" hidden>
 
-              <a class="tlink mail" href="mailto:o1m0.info.jp@gmail.com" target="_blank">
-                <span class="icon"><i data-lucide="mail"></i></span>
-                <span class="k">Email</span>
-                <span class="v">o1m0.info.jp@gmail.com</span>
-                <span class="arrow">↗</span>
-              </a>
-
-              <a class="tlink github" href="https://github.com/O1M0" target="_blank">
+              <a class="tlink github" href="https://github.com/o1m0" target="_blank">
                 <span class="icon"><i data-lucide="github"></i></span>
                 <span class="k">GitHub</span>
-                <span class="v">github.com/O1M0</span>
+                <span class="v">github.com/o1m0</span>
                 <span class="arrow">↗</span>
               </a>
 
-<a class="tlink x" href="#" target="_blank">
-  <span class="icon">
-    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-      <path d="M18.244 2H21l-6.56 7.5L22 22h-6.8l-5.33-6.97L4.2 22H1.44l7.02-8.02L2 2h6.93l4.83 6.33L18.244 2Zm-1.19 18h1.9L7.01 4h-2L17.054 20Z"/>
-    </svg>
-  </span>
-  <span class="k">X</span>
-  <span class="v">Nothing</span>
-  <span class="arrow">↗</span>
-</a>
+              <a class="tlink instagram" href="https://www.instagram.com/0ba.dev/" target="_blank">
+                <span class="icon">
+                  <img src="https://api.iconify.design/simple-icons:instagram.svg?color=%23E4405F" alt=""
+                    loading="lazy" />
+                </span>
+                <span class="k">Instagram</span>
+                <span class="v">@0ba.dev</span>
+                <span class="arrow">↗</span>
+              </a>
 
-           <!--   <a class="tlink linkedin" href="https://linkedin.com/in/yourname" target="_blank">
+              <a class="tlink x" href="https://x.com/0ba_dev" target="_blank">
+                <span class="icon">
+                  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path
+                      d="M18.244 2H21l-6.56 7.5L22 22h-6.8l-5.33-6.97L4.2 22H1.44l7.02-8.02L2 2h6.93l4.83 6.33L18.244 2Zm-1.19 18h1.9L7.01 4h-2L17.054 20Z" />
+                  </svg>
+                </span>
+                <span class="k">X</span>
+                <span class="v">@0ba_dev</span>
+                <span class="arrow">↗</span>
+              </a>
+
+              <a class="tlink zenn" href="https://zenn.dev/0ba_dev" target="_blank">
+                <span class="icon">
+                  <img src="https://api.iconify.design/simple-icons:zenn.svg?color=%233EA8FF" alt="" loading="lazy" />
+                </span>
+                <span class="k">Zenn</span>
+                <span class="v">@0ba_dev</span>
+                <span class="arrow">↗</span>
+              </a>
+
+              <a class="tlink mail" href="mailto:contact@0ba.dev" target="_blank">
+                <span class="icon"><i data-lucide="mail"></i></span>
+                <span class="k">Email</span>
+                <span class="v">contact@0ba.dev</span>
+                <span class="arrow">↗</span>
+              </a>
+
+              <!--   <a class="tlink linkedin" href="https://linkedin.com/in/yourname" target="_blank">
                 <span class="icon"><i data-lucide="linkedin"></i></span>
                 <span class="k">LinkedIn</span>
                 <span class="v">linkedin.com/in/yourname</span>
@@ -459,17 +482,17 @@
 
             </div>-->
 
-            <div class="terminal-actions" id="actions" hidden>
-              <button class="tbtn" type="button" id="replayBtn">Reconnect</button>
+              <div class="terminal-actions" id="actions" hidden>
+                <button class="tbtn" type="button" id="replayBtn">Reconnect</button>
 
-              <label class="sound-toggle">
-                <input type="checkbox" id="soundToggle">
-                <span>Sound</span>
-              </label>
+                <label class="sound-toggle">
+                  <input type="checkbox" id="soundToggle">
+                  <span>Sound</span>
+                </label>
+              </div>
             </div>
           </div>
         </div>
-      </div>
     </section>
   </main>
   <footer class="site-footer">
@@ -501,8 +524,23 @@
             <span>GitHub</span>
           </a>
 
+          <!-- Instagram -->
+          <a class="social-btn" href="https://www.instagram.com/0ba.dev/" target="_blank" rel="noopener"
+            aria-label="Instagram">
+            <img src="https://api.iconify.design/simple-icons:instagram.svg?color=%23E4405F" width="18" height="18"
+              alt="" loading="lazy" />
+            <span>Instagram</span>
+          </a>
+
+          <!-- Zenn -->
+          <a class="social-btn" href="https://zenn.dev/0ba_dev" target="_blank" rel="noopener" aria-label="Zenn">
+            <img src="https://api.iconify.design/simple-icons:zenn.svg?color=%233EA8FF" width="18" height="18" alt=""
+              loading="lazy" />
+            <span>Zenn</span>
+          </a>
+
           <!-- Email -->
-          <a class="social-btn" href="mailto:yourmail@example.com" aria-label="Email">
+          <a class="social-btn" href="mailto:contact@0ba.dev" aria-label="Email">
             <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
               <path fill="currentColor"
                 d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Zm0 4-8 5L4 8V6l8 5 8-5v2Z" />
@@ -520,21 +558,24 @@
           <a href="#vision">Vision</a>
           <a href="#skills">Skills</a>
           <a href="#projects">Projects</a>
+          <a href="#sns">SNS</a>
         </div>
 
         <div class="footer-col">
-          <p class="footer-head">Contact</p>
-          <a href="mailto:o1m0.info.jp@gmail.com">Email</a>
-          <a href="#" target="_blank" rel="noopener">X / Twitter</a>
-          <a href="https://github.com/O1M0" target="_blank" rel="noopener">GitHub</a>
+          <p class="footer-head">SNS</p>
+          <a href="https://github.com/o1m0" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://www.instagram.com/0ba.dev/" target="_blank" rel="noopener">Instagram</a>
+          <a href="https://zenn.dev/0ba_dev" target="_blank" rel="noopener">Zenn</a>
+          <a href="https://x.com/0ba_dev" target="_blank" rel="noopener">X / Twitter</a>
+          <a href="mailto:contact@0ba.dev">Email</a>
         </div>
 
         <div class="footer-col footer-cta">
           <p class="footer-head">Message</p>
           <p class="footer-note">
-            貼っていますが基本確認していないです。
+            連絡はこちらから
           </p>
-          <a class="footer-cta-btn" href="mailto:o1m0.info.jp@gmail.com">
+          <a class="footer-cta-btn" href="mailto:contact@0ba.dev" aria-label="Send Email">
             Send Email →
           </a>
         </div>

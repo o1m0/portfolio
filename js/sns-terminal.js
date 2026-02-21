@@ -1,4 +1,4 @@
-// js/contact-terminal.js
+// js/sns-terminal.js
 (() => {
   const cmdEl = document.getElementById("cmd");
   const statusEl = document.getElementById("status");
