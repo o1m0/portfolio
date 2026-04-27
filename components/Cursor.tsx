@@ -6,8 +6,15 @@ import { motion } from "framer-motion";
 export default function Cursor() {
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [hovered, setHovered] = useState(false);
+  const [isMouse, setIsMouse] = useState(false);
 
   useEffect(() => {
+    setIsMouse(window.matchMedia("(hover: hover) and (pointer: fine)").matches);
+  }, []);
+
+  useEffect(() => {
+    if (!isMouse) return;
+
     const handleMouseMove = (e: MouseEvent) => {
       setPosition({ x: e.clientX, y: e.clientY });
     };
@@ -27,7 +34,9 @@ export default function Cursor() {
       window.removeEventListener("mousemove", handleMouseMove);
       window.removeEventListener("mouseover", handleMouseOver);
     };
-  }, []);
+  }, [isMouse]);
+
+  if (!isMouse) return null;
 
   return (
     <motion.div

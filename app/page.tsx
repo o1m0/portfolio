@@ -17,13 +17,13 @@ export default function Home() {
   return (
     <>
       <Header />
-      <main className="max-w-2xl mx-auto px-6 pt-40 pb-32 space-y-40">
+      <main className="max-w-2xl mx-auto px-6 pt-24 sm:pt-40 pb-20 sm:pb-32 space-y-24 sm:space-y-40">
         <FadeIn onLoad>
           <section id="about">
             <p className="text-xs text-muted-foreground tracking-widest uppercase mb-4">
               Software Engineer
             </p>
-            <h1 className="text-5xl font-semibold tracking-tight mb-8">
+            <h1 className="text-4xl sm:text-5xl font-semibold tracking-tight mb-8">
               Haru Oba
             </h1>
             <p className="text-muted-foreground leading-loose text-sm">
@@ -139,7 +139,7 @@ export default function Home() {
               Works
             </p>
             <div className="space-y-2">
-              <div className="flex justify-between items-start">
+              <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-2">
                 <div className="flex items-center gap-3">
                   <h3 className="text-sm font-medium">Rannery</h3>
                   <span className="text-xs border border-border text-muted-foreground px-2 py-0.5 rounded-full">
