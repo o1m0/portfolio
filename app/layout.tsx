@@ -16,10 +16,15 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Haru | Portfolio",
-  description: "大阪工業大学 情報知能学科 在学中。WebエンジニアになるためにNext.js・MongoDB・GoでWebアプリを開発しています。",
+  description:
+    "大阪工業大学 情報知能学科 在学中。WebエンジニアになるためにNext.js・MongoDB・GoでWebアプリを開発しています。",
+  icons: {
+    icon: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🗄️</text></svg>",
+  },
   openGraph: {
     title: "Haru | Portfolio",
-    description: "大阪工業大学 情報知能学科 在学中。WebエンジニアになるためにNext.js・MongoDB・GoでWebアプリを開発しています。",
+    description:
+      "大阪工業大学 情報知能学科 在学中。WebエンジニアになるためにNext.js・MongoDB・GoでWebアプリを開発しています。",
     url: "https://portfolio-two-hazel-28.vercel.app/",
     siteName: "Haru Portfolio",
     locale: "ja_JP",
@@ -28,7 +33,8 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary",
     title: "Haru | Portfolio",
-    description: "大阪工業大学 情報知能学科 在学中。WebエンジニアになるためにNext.js・MongoDB・GoでWebアプリを開発しています。",
+    description:
+      "大阪工業大学 情報知能学科 在学中。WebエンジニアになるためにNext.js・MongoDB・GoでWebアプリを開発しています。",
   },
 };
 
