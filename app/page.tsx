@@ -3,6 +3,15 @@
 import { motion } from "framer-motion";
 import Header from "@/components/Header";
 import FadeIn from "@/components/FadeIn";
+import { BsTypescript } from "react-icons/bs";
+import { RiNextjsFill } from "react-icons/ri";
+import { TbBrandMongodb } from "react-icons/tb";
+import { IoLogoVercel } from "react-icons/io5";
+import { FaGithub } from "react-icons/fa"; // Font Awesome
+import { FaXTwitter } from "react-icons/fa6"; // X(Twitter)
+import { SiZenn } from "react-icons/si"; // Simple Icons
+import { FaInstagram } from "react-icons/fa"; // Instagram
+import { MdEmail } from "react-icons/md"; // Material Design
 
 export default function Home() {
   return (
@@ -75,6 +84,7 @@ export default function Home() {
           </section>
         </FadeIn>
 
+        {/* Works */}
         <FadeIn delay={0.1}>
           <section id="works">
             <p className="text-xs text-muted-foreground tracking-widest uppercase mb-8">
@@ -82,36 +92,48 @@ export default function Home() {
             </p>
             <div className="space-y-2">
               <div className="flex justify-between items-start">
-                <h3 className="text-sm font-medium">Rannery</h3>
-                <motion.a
-                  href="https://github.com/o1m0/rannery"
-                  target="_blank"
-                  className="text-xs text-muted-foreground transition-colors"
-                  whileHover={{ x: 4 }}
-                  transition={{ duration: 0.2 }}
-                >
-                  GitHub &#8594;
-                </motion.a>
+                <div className="flex items-center gap-3">
+                  <h3 className="text-sm font-medium">Rannery</h3>
+                  <span className="text-xs border border-border text-muted-foreground px-2 py-0.5 rounded-full">
+                    個人開発
+                  </span>
+                  <span className="text-xs border border-green-500 text-green-500 px-2 py-0.5 rounded-full">
+                    完成
+                  </span>
+                </div>
+                <div className="flex gap-4">
+                  <motion.a
+                    href="https://rannery.vercel.app"
+                    target="_blank"
+                    className="text-xs text-muted-foreground transition-colors"
+                    whileHover={{ x: 4 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    Demo &#8594;
+                  </motion.a>
+                  <motion.a
+                    href="https://github.com/o1m0/rannery"
+                    target="_blank"
+                    className="text-xs text-muted-foreground transition-colors"
+                    whileHover={{ x: 4 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    GitHub &#8594;
+                  </motion.a>
+                </div>
               </div>
               <p className="text-sm text-muted-foreground leading-loose">
                 AIが学習プランを自動生成・修正する学習管理アプリ。
                 Next.js・MongoDB・Gemini APIを使って個人開発しました。
               </p>
-              <div className="flex gap-2 flex-wrap pt-2">
-                {[
-                  "Next.js",
-                  "TypeScript",
-                  "MongoDB",
-                  "Gemini API",
-                  "Vercel",
-                ].map((tag) => (
-                  <span
-                    key={tag}
-                    className="text-xs border border-border px-2 py-1 rounded-full text-muted-foreground"
-                  >
-                    {tag}
-                  </span>
-                ))}
+              <div className="flex gap-3 flex-wrap pt-2 items-center">
+                <RiNextjsFill size={18} className="text-muted-foreground" />
+                <BsTypescript size={16} className="text-muted-foreground" />
+                <TbBrandMongodb size={18} className="text-muted-foreground" />
+                <IoLogoVercel size={16} className="text-muted-foreground" />
+                <span className="text-xs text-muted-foreground">
+                  Gemini API
+                </span>
               </div>
             </div>
           </section>
@@ -123,37 +145,59 @@ export default function Home() {
               Contact
             </p>
             <div className="space-y-4">
-              <motion.a
-                href="https://github.com/o1m0"
-                target="_blank"
-                className="flex justify-between items-center group"
-                whileHover={{ y: -2 }}
-                transition={{ duration: 0.2 }}
-              >
-                <span className="text-sm">GitHub</span>
-                <motion.span
-                  className="text-sm text-muted-foreground"
-                  whileHover={{ x: 4 }}
+              {[
+                {
+                  icon: <FaGithub size={16} />,
+                  label: "GitHub",
+                  href: "https://github.com/o1m0",
+                  sub: "@o1m0",
+                },
+                {
+                  icon: <FaXTwitter size={16} />,
+                  label: "X",
+                  href: "https://x.com/0ba_dev",
+                  sub: "@0ba_dev",
+                },
+                {
+                  icon: <SiZenn size={16} />,
+                  label: "Zenn",
+                  href: "https://zenn.dev/0ba_dev",
+                  sub: "@0ba_dev",
+                },
+                {
+                  icon: <FaInstagram size={16} />,
+                  label: "Instagram",
+                  href: "https://www.instagram.com/0ba.dev/",
+                  sub: "@0ba.dev",
+                },
+                {
+                  icon: <MdEmail size={16} />,
+                  label: "Email",
+                  href: "contact@0ba.dev",
+                  sub: "contact@0ba.dev",
+                },
+              ].map((item) => (
+                <motion.a
+                  key={item.label}
+                  href={item.href}
+                  target="_blank"
+                  className="flex justify-between items-center group"
+                  whileHover={{ y: -2 }}
                   transition={{ duration: 0.2 }}
                 >
-                  @o1m0 &#8594;
-                </motion.span>
-              </motion.a>
-              <motion.a
-                href="mailto:your-email@gmail.com"
-                className="flex justify-between items-center group"
-                whileHover={{ y: -2 }}
-                transition={{ duration: 0.2 }}
-              >
-                <span className="text-sm">Email</span>
-                <motion.span
-                  className="text-sm text-muted-foreground"
-                  whileHover={{ x: 4 }}
-                  transition={{ duration: 0.2 }}
-                >
-                  your-email@gmail.com &#8594;
-                </motion.span>
-              </motion.a>
+                  <span className="flex items-center gap-3 text-sm text-muted-foreground">
+                    {item.icon}
+                    {item.label}
+                  </span>
+                  <motion.span
+                    className="text-sm text-muted-foreground"
+                    whileHover={{ x: 4 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    {item.sub} &#8594;
+                  </motion.span>
+                </motion.a>
+              ))}
             </div>
           </section>
         </FadeIn>
@@ -161,7 +205,7 @@ export default function Home() {
 
       <footer className="border-t border-border">
         <div className="max-w-2xl mx-auto px-6 py-8">
-          <p className="text-xs text-muted-foreground">© 2026 Haru</p>
+          <p className="text-xs text-muted-foreground">© 2026 Haru Oba</p>
         </div>
       </footer>
     </>
