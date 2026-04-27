@@ -42,7 +42,34 @@ export default function Home() {
             <div className="space-y-8">
               <div className="flex gap-8">
                 <span className="text-xs text-muted-foreground w-20 shrink-0 pt-0.5">
-                  2023.04
+                  2021.04
+                </span>
+                <div className="space-y-3">
+                  <p className="text-sm">
+                    神戸市立科学技術高等学校 科学工学科 入学
+                  </p>
+                  <div className="space-y-2 border-l border-border pl-4">
+                    <p className="text-xs text-muted-foreground">
+                      ジャパンマイコンカーラリー近畿地区大会 CameraClass 3連覇
+                    </p>
+                    <p className="text-xs text-muted-foreground">
+                      ジャパンマイコンカーラリー全国大会 CameraClass 優勝
+                    </p>
+                    <p className="text-xs text-muted-foreground">
+                      マイクロマウス関西地区大会 マイクロマウス部門 特別賞
+                    </p>
+                    <p className="text-xs text-muted-foreground">
+                      全日本マイクロマウス大会 セミファイナル部門 特別賞
+                    </p>
+                    <p className="text-xs text-muted-foreground">
+                      神戸市児童生徒賞 受賞
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div className="flex gap-8">
+                <span className="text-xs text-muted-foreground w-20 shrink-0 pt-0.5">
+                  2024.04
                 </span>
                 <p className="text-sm">
                   大阪工業大学 情報学部 情報知能学科 入学
@@ -52,12 +79,15 @@ export default function Home() {
                 <span className="text-xs text-muted-foreground w-20 shrink-0 pt-0.5">
                   2026.04
                 </span>
-                <p className="text-sm">休学・独学でWebエンジニアを目指す</p>
+                <p className="text-sm">
+                  休学・独学でバックエンドエンジニアを目指す
+                </p>
               </div>
             </div>
           </section>
         </FadeIn>
 
+        {/* Skills */}
         <FadeIn delay={0.1}>
           <section id="skills">
             <p className="text-xs text-muted-foreground tracking-widest uppercase mb-8">
@@ -78,6 +108,24 @@ export default function Home() {
                     {item.label}
                   </span>
                   <p className="text-sm">{item.value}</p>
+                </div>
+              ))}
+            </div>
+
+            <div className="mt-10 space-y-4">
+              <p className="text-xs text-muted-foreground tracking-widest uppercase mb-6">
+                Learning Next
+              </p>
+              {[
+                { label: "Backend", value: "Go / PostgreSQL" },
+                { label: "Infra", value: "Docker / AWS / Nginx" },
+                { label: "Other", value: "GitHub Actions / CI/CD" },
+              ].map((item) => (
+                <div key={item.label} className="flex gap-8">
+                  <span className="text-xs text-muted-foreground w-20 shrink-0 pt-0.5">
+                    {item.label}
+                  </span>
+                  <p className="text-sm text-muted-foreground">{item.value}</p>
                 </div>
               ))}
             </div>
