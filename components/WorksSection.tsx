@@ -18,7 +18,7 @@ export default function WorksSection() {
     if (!mounted) return null
 
     return (
-        <div className="space-y-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {works.map((work) => (
                 <div key={work.ID} className="border border-border rounded-lg overflow-hidden">
                     {work.ImageURL && (
