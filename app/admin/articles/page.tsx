@@ -1,14 +1,12 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { useRouter } from "next/navigation"
 import { Article } from "@/types"
 
 export default function AdminArticlesPage() {
     const [articles, setArticles] = useState<Article[]>([])
     const [title, setTitle] = useState("")
     const [body, setBody] = useState("")
-    const router = useRouter()
 
     const token = typeof window !== "undefined" ? localStorage.getItem("token") : ""
 
