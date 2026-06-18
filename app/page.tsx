@@ -3,16 +3,13 @@
 import { motion } from "framer-motion";
 import Header from "@/components/Header";
 import FadeIn from "@/components/FadeIn";
-import { BsTypescript } from "react-icons/bs";
-import { RiNextjsFill } from "react-icons/ri";
-import { TbBrandMongodb } from "react-icons/tb";
-import { IoLogoVercel } from "react-icons/io5";
 import { FaGithub } from "react-icons/fa"; // Font Awesome
 import { FaXTwitter } from "react-icons/fa6"; // X(Twitter)
 import { SiZenn } from "react-icons/si"; // Simple Icons
 import { FaInstagram } from "react-icons/fa"; // Instagram
 import { MdEmail } from "react-icons/md"; // Material Design
 import Footer from '@/components/Footer'
+import WorksSection from '@/components/WorksSection'
 
 export default function Home() {
   return (
@@ -134,59 +131,14 @@ export default function Home() {
         </FadeIn>
 
         {/* Works */}
-        <FadeIn delay={0.1}>
-          <section id="works">
-            <p className="text-xs text-muted-foreground tracking-widest uppercase mb-8">
-              Works
-            </p>
-            <div className="space-y-2">
-              <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-2">
-                <div className="flex items-center gap-3">
-                  <h3 className="text-sm font-medium">Rannery</h3>
-                  <span className="text-xs border border-border text-muted-foreground px-2 py-0.5 rounded-full">
-                    個人開発
-                  </span>
-                  <span className="text-xs border border-green-500 text-green-500 px-2 py-0.5 rounded-full">
-                    完成
-                  </span>
-                </div>
-                <div className="flex gap-4">
-                  <motion.a
-                    href="https://rannery.vercel.app"
-                    target="_blank"
-                    className="text-xs text-muted-foreground transition-colors"
-                    whileHover={{ x: 4 }}
-                    transition={{ duration: 0.2 }}
-                  >
-                    Demo &#8594;
-                  </motion.a>
-                  <motion.a
-                    href="https://github.com/o1m0/rannery"
-                    target="_blank"
-                    className="text-xs text-muted-foreground transition-colors"
-                    whileHover={{ x: 4 }}
-                    transition={{ duration: 0.2 }}
-                  >
-                    GitHub &#8594;
-                  </motion.a>
-                </div>
-              </div>
-              <p className="text-sm text-muted-foreground leading-loose">
-                AIが学習プランを自動生成・修正する学習管理アプリ。
-                Next.js・MongoDB・Gemini APIを使って個人開発しました。
-              </p>
-              <div className="flex gap-3 flex-wrap pt-2 items-center">
-                <RiNextjsFill size={18} className="text-muted-foreground" />
-                <BsTypescript size={16} className="text-muted-foreground" />
-                <TbBrandMongodb size={18} className="text-muted-foreground" />
-                <IoLogoVercel size={16} className="text-muted-foreground" />
-                <span className="text-xs text-muted-foreground">
-                  Gemini API
-                </span>
-              </div>
-            </div>
-          </section>
-        </FadeIn>
+<FadeIn delay={0.1}>
+  <section id="works">
+    <p className="text-xs text-muted-foreground tracking-widest uppercase mb-8">
+      Works
+    </p>
+    <WorksSection />
+  </section>
+</FadeIn>
 
         <FadeIn delay={0.1}>
           <section id="contact">
