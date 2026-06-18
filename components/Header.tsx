@@ -3,8 +3,18 @@
 import { useTheme } from "@/app/providers";
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Link from "next/link";
 
 const NAV_ITEMS = ["About", "Career", "Skills", "Works", "Contact"];
+
+const scrollToSection = (id: string) => {
+  const el = document.getElementById(id);
+  if (el) {
+    el.scrollIntoView({ behavior: "smooth" });
+  } else {
+    window.location.href = `/#${id}`;
+  }
+};
 
 export default function Header() {
   const { theme, toggleTheme } = useTheme();
@@ -69,9 +79,11 @@ export default function Header() {
             {NAV_ITEMS.map((item) => (
               <a
                 key={item}
-                href={`#${item.toLowerCase()}`}
-                onClick={() => setMenuOpen(false)}
-                className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+onClick={() => {
+    setMenuOpen(false);
+    setTimeout(() => scrollToSection(item.toLowerCase()), 300);
+}}
+                className="text-sm text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
               >
                 {item}
               </a>
@@ -96,14 +108,16 @@ export default function Header() {
             className="fixed top-0 left-0 right-0 z-50 border-b border-border bg-background"
           >
             <div className="max-w-2xl mx-auto px-6 py-4 flex justify-between items-center">
-              <span className="font-medium text-sm">Haru Oba</span>
+              <Link href="/" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} className="font-medium text-sm">
+                Haru Oba
+              </Link>
               <div className="flex items-center gap-4">
                 <nav className="hidden sm:flex items-center gap-6">
                   {NAV_ITEMS.map((item) => (
                     <motion.a
                       key={item}
-                      href={`#${item.toLowerCase()}`}
-                      className="text-xs text-muted-foreground hover:text-foreground transition-colors"
+                      onClick={() => scrollToSection(item.toLowerCase())}
+                      className="text-xs text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
                       whileHover={{ y: -2 }}
                       transition={{ duration: 0.2 }}
                     >
@@ -132,13 +146,15 @@ export default function Header() {
           >
             <header className="w-full sm:w-auto border border-border rounded-2xl sm:rounded-full px-6 py-2 bg-background shadow-md">
               <div className="flex items-center justify-between sm:justify-start gap-4">
-                <span className="font-medium text-sm">Haru Oba</span>
+                <Link href="/" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} className="font-medium text-sm">
+                  Haru Oba
+                </Link>
                 <nav className="hidden sm:flex items-center gap-6">
                   {NAV_ITEMS.map((item) => (
                     <motion.a
                       key={item}
-                      href={`#${item.toLowerCase()}`}
-                      className="text-xs text-muted-foreground hover:text-foreground transition-colors"
+                      onClick={() => scrollToSection(item.toLowerCase())}
+                      className="text-xs text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
                       whileHover={{ y: -2 }}
                       transition={{ duration: 0.2 }}
                     >
@@ -162,9 +178,11 @@ export default function Header() {
                       {NAV_ITEMS.map((item) => (
                         <a
                           key={item}
-                          href={`#${item.toLowerCase()}`}
-                          onClick={() => setMenuOpen(false)}
-                          className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+onClick={() => {
+    setMenuOpen(false);
+    setTimeout(() => scrollToSection(item.toLowerCase()), 300);
+}}
+                          className="text-sm text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
                         >
                           {item}
                         </a>
