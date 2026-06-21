@@ -1,8 +1,25 @@
+"use client"
+
+import { useState, useEffect } from "react"
 import Footer from '@/components/Footer'
 import Header from '@/components/Header'
 import ArticlesSection from '@/components/ArticlesSection'
 
+type Category = {
+    ID: number
+    Name: string
+}
+
 export default function ArticlesPage() {
+    const [categories, setCategories] = useState<Category[]>([])
+    const [selectedCategory, setSelectedCategory] = useState<number | undefined>(undefined)
+
+    useEffect(() => {
+        fetch("http://localhost:8080/categories")
+            .then(res => res.json())
+            .then(data => setCategories(data))
+    }, [])
+
     return (
         <div className="flex flex-col min-h-screen">
             <Header />
@@ -10,7 +27,24 @@ export default function ArticlesPage() {
                 <p className="text-xs text-muted-foreground tracking-widest uppercase mb-8">
                     Articles
                 </p>
-                <ArticlesSection showAllLink={false} />
+                <div className="flex gap-2 mb-8 flex-wrap">
+                    <button
+                        onClick={() => setSelectedCategory(undefined)}
+                        className={`text-xs border px-3 py-1 rounded-full ${!selectedCategory ? 'border-foreground' : 'border-border text-muted-foreground'}`}
+                    >
+                        すべて
+                    </button>
+                    {categories.map((category) => (
+                        <button
+                            key={category.ID}
+                            onClick={() => setSelectedCategory(category.ID)}
+                            className={`text-xs border px-3 py-1 rounded-full ${selectedCategory === category.ID ? 'border-foreground' : 'border-border text-muted-foreground'}`}
+                        >
+                            {category.Name}
+                        </button>
+                    ))}
+                </div>
+                <ArticlesSection showAllLink={false} categoryId={selectedCategory} />
             </main>
             <Footer />
         </div>

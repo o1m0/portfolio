@@ -5,16 +5,19 @@ import { Article } from "@/types"
 import Link from "next/link"
 import { formatDate } from "@/lib/utils"
 
-export default function ArticlesSection({ showAllLink = true }: { showAllLink?: boolean }) {
+export default function ArticlesSection({ showAllLink = true, categoryId }: { showAllLink?: boolean, categoryId?: number }) {
     const [articles, setArticles] = useState<Article[]>([])
     const [mounted, setMounted] = useState(false)
 
     useEffect(() => {
         setMounted(true)
-        fetch("http://localhost:8080/articles")
+        const url = categoryId 
+            ? `http://localhost:8080/articles?category_id=${categoryId}`
+            : "http://localhost:8080/articles"
+        fetch(url)
             .then(res => res.json())
             .then(data => setArticles(data))
-    }, [])
+    }, [categoryId])
 
     if (!mounted) return null
 

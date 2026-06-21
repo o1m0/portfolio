@@ -5,16 +5,19 @@ import { Work } from "@/types"
 import NextImage from 'next/image'
 import Link from 'next/link'
 
-export default function WorksSection() {
+export default function WorksSection({ categoryId }: { categoryId?: number }) {
     const [works, setWorks] = useState<Work[]>([])
     const [mounted, setMounted] = useState(false)
 
     useEffect(() => {
         setMounted(true)
-        fetch("http://localhost:8080/works")
+        const url = categoryId 
+            ? `http://localhost:8080/works?category_id=${categoryId}`
+            : "http://localhost:8080/works"
+        fetch(url)
             .then(res => res.json())
             .then(data => setWorks(data))
-    }, [])
+    }, [categoryId])
 
     if (!mounted) return null
 
