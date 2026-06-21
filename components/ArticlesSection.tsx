@@ -5,7 +5,7 @@ import { Article } from "@/types"
 import Link from "next/link"
 import { formatDate } from "@/lib/utils"
 
-export default function ArticlesSection() {
+export default function ArticlesSection({ showAllLink = true }: { showAllLink?: boolean }) {
     const [articles, setArticles] = useState<Article[]>([])
     const [mounted, setMounted] = useState(false)
 
@@ -40,9 +40,11 @@ export default function ArticlesSection() {
                     </div>
                 </Link>
             ))}
-            <Link href="/articles" className="text-xs text-muted-foreground hover:text-foreground">
-                すべての記事を見る →
-            </Link>
+            {showAllLink && (
+                <Link href="/articles" className="text-xs text-muted-foreground hover:text-foreground">
+                    すべての記事を見る →
+                </Link>
+            )}
         </div>
     )
 }
