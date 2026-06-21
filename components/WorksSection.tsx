@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react"
 import { Work } from "@/types"
 import NextImage from 'next/image'
+import Link from 'next/link'
 
 export default function WorksSection() {
     const [works, setWorks] = useState<Work[]>([])
@@ -21,19 +22,23 @@ export default function WorksSection() {
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {works.map((work) => (
                 <div key={work.ID} className="border border-border rounded-lg overflow-hidden shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md">
-                    {work.ImageURL && (
-                        <NextImage
-                            src={work.ImageURL}
-                            alt={work.Title}
-                            width={600}
-                            height={400}
-                            className="w-full object-cover"
-                            style={{ height: '200px' }}
-                        />
-                    )}
+                    <Link href={`/works/${work.ID}`}>
+                        {work.ImageURL && (
+                            <NextImage
+                                src={work.ImageURL}
+                                alt={work.Title}
+                                width={600}
+                                height={400}
+                                className="w-full object-cover"
+                                style={{ height: '200px' }}
+                            />
+                        )}
+                    </Link>
                     <div className="p-4 space-y-2">
                         <div className="flex justify-between items-start">
-                            <h3 className="text-sm font-medium">{work.Title}</h3>
+                            <Link href={`/works/${work.ID}`}>
+                                <h3 className="text-sm font-medium hover:underline">{work.Title}</h3>
+                            </Link>
                             <div className="flex gap-4">
                                 {work.DemoURL && (
                                     <a href={work.DemoURL} target="_blank" className="text-xs text-muted-foreground">
