@@ -5,19 +5,21 @@ import { Article } from "@/types"
 import Link from "next/link"
 import { formatDate } from "@/lib/utils"
 
-export default function ArticlesSection({ showAllLink = true, categoryId }: { showAllLink?: boolean, categoryId?: number }) {
+export default function ArticlesSection({ showAllLink = true, categoryId, search, sort }: { showAllLink?: boolean, categoryId?: number, search?: string, sort?: string }) {
     const [articles, setArticles] = useState<Article[]>([])
     const [mounted, setMounted] = useState(false)
 
     useEffect(() => {
         setMounted(true)
-        const url = categoryId 
-            ? `http://localhost:8080/articles?category_id=${categoryId}`
-            : "http://localhost:8080/articles"
+        const params = new URLSearchParams()
+        if (categoryId) params.append("category_id", String(categoryId))
+        if (search) params.append("search", search)
+        if (sort) params.append("sort", sort)
+        const url = `http://localhost:8080/articles${params.toString() ? '?' + params.toString() : ''}`
         fetch(url)
             .then(res => res.json())
             .then(data => setArticles(data))
-    }, [categoryId])
+    }, [categoryId, search, sort])
 
     if (!mounted) return null
 

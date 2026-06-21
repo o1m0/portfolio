@@ -13,6 +13,8 @@ type Category = {
 export default function ArticlesPage() {
     const [categories, setCategories] = useState<Category[]>([])
     const [selectedCategory, setSelectedCategory] = useState<number | undefined>(undefined)
+    const [search, setSearch] = useState("")
+    const [sort, setSort] = useState("")
 
     useEffect(() => {
         fetch("http://localhost:8080/categories")
@@ -27,6 +29,24 @@ export default function ArticlesPage() {
                 <p className="text-xs text-muted-foreground tracking-widest uppercase mb-8">
                     Articles
                 </p>
+                                <div className="flex gap-4 mb-4">
+    <input
+        type="text"
+        placeholder="記事を検索"
+        value={search}
+        onChange={(e) => setSearch(e.target.value)}
+        className="flex-1 border border-border px-3 py-2 text-sm rounded"
+    />
+    <select
+        value={sort}
+        onChange={(e) => setSort(e.target.value)}
+        className="border border-border px-3 py-2 text-sm rounded"
+    >
+        <option value="">並び替え</option>
+        <option value="created_at DESC">新しい順</option>
+        <option value="created_at ASC">古い順</option>
+    </select>
+</div>
                 <div className="flex gap-2 mb-8 flex-wrap">
                     <button
                         onClick={() => setSelectedCategory(undefined)}
@@ -44,7 +64,7 @@ export default function ArticlesPage() {
                         </button>
                     ))}
                 </div>
-                <ArticlesSection showAllLink={false} categoryId={selectedCategory} />
+                <ArticlesSection showAllLink={false} categoryId={selectedCategory} search={search} sort={sort} />
             </main>
             <Footer />
         </div>

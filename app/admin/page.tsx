@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { useRouter } from "next/navigation"
 
 export default function AdminPage() {
@@ -20,6 +20,13 @@ export default function AdminPage() {
             router.push("/admin/articles")
         }
     }
+
+    useEffect(() => {
+    const token = localStorage.getItem("token")
+    if (token) {
+        router.push("/admin/articles")
+    }
+}, [])
 
     return (
         <div className="flex flex-col min-h-screen items-center justify-center">
