@@ -15,6 +15,7 @@ export default function ArticlesPage() {
     const [selectedCategory, setSelectedCategory] = useState<number | undefined>(undefined)
     const [search, setSearch] = useState("")
     const [sort, setSort] = useState("")
+    const [page, setPage] = useState(1)
 
     useEffect(() => {
         fetch("http://localhost:8080/categories")
@@ -64,7 +65,23 @@ export default function ArticlesPage() {
                         </button>
                     ))}
                 </div>
-                <ArticlesSection showAllLink={false} categoryId={selectedCategory} search={search} sort={sort} />
+                <ArticlesSection showAllLink={false} categoryId={selectedCategory} search={search} sort={sort} page={page} />
+                <div className="flex gap-4 justify-center mt-8">
+    <button
+        onClick={() => setPage(p => Math.max(1, p - 1))}
+        disabled={page === 1}
+        className="text-xs border border-border px-3 py-1 rounded disabled:opacity-30"
+    >
+        前へ
+    </button>
+    <span className="text-xs text-muted-foreground">{page}</span>
+    <button
+        onClick={() => setPage(p => p + 1)}
+        className="text-xs border border-border px-3 py-1 rounded"
+    >
+        次へ
+    </button>
+</div>
             </main>
             <Footer />
         </div>
