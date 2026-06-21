@@ -10,6 +10,7 @@ import { FaInstagram } from "react-icons/fa"; // Instagram
 import { MdEmail } from "react-icons/md"; // Material Design
 import Footer from '@/components/Footer'
 import WorksSection from '@/components/WorksSection'
+import ArticlesSection from '@/components/ArticlesSection'
 
 export default function Home() {
   return (
@@ -137,6 +138,14 @@ export default function Home() {
       Works
     </p>
     <WorksSection />
+  </section>
+</FadeIn>
+<FadeIn delay={0.1}>
+  <section id="articles">
+    <p className="text-xs text-muted-foreground tracking-widest uppercase mb-8">
+      Articles
+    </p>
+    <ArticlesSection />
   </section>
 </FadeIn>
 

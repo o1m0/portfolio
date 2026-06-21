@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react"
 import { Article } from "@/types"
+import Link from 'next/link'
 
 export default function AdminArticlesPage() {
     const [articles, setArticles] = useState<Article[]>([])
@@ -27,7 +28,6 @@ export default function AdminArticlesPage() {
         })
         setTitle("")
         setBody("")
-        // 一覧を再取得
         fetch("http://localhost:8080/articles")
             .then(res => res.json())
             .then(data => setArticles(data))
@@ -69,14 +69,25 @@ export default function AdminArticlesPage() {
 
             <div className="space-y-4">
                 {articles.map((article) => (
-                    <div key={article.ID} className="flex justify-between items-center">
-                        <span className="text-sm">{article.Title}</span>
-                        <button
-                            onClick={() => handleDelete(article.ID)}
-                            className="text-xs text-muted-foreground hover:text-foreground"
-                        >
-                            削除
-                        </button>
+<div key={article.ID} className="flex justify-between items-center">
+    <div>
+        <span className="text-sm">{article.Title}</span>
+        <p className="text-xs text-muted-foreground">{article.Body.slice(0, 50)}...</p>
+    </div>
+    <div className="flex gap-4">
+                            <Link
+                                href={`/admin/articles/${article.ID}/edit`}
+                                className="text-xs text-muted-foreground hover:text-foreground"
+                            >
+                                編集
+                            </Link>
+                            <button
+                                onClick={() => handleDelete(article.ID)}
+                                className="text-xs text-muted-foreground hover:text-foreground"
+                            >
+                                削除
+                            </button>
+                        </div>
                     </div>
                 ))}
             </div>

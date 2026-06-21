@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 
-const NAV_ITEMS = ["About", "Career", "Skills", "Works", "Contact"];
+const NAV_ITEMS = ["About", "Career", "Skills", "Works", "Articles", "Contact"];
 
 const scrollToSection = (id: string) => {
   const el = document.getElementById(id);

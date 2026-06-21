@@ -1,3 +1,8 @@
+export type Category = {
+    ID: number
+    Name: string
+}
+
 export type Article = {
     ID: number
     Title: string
@@ -5,6 +10,7 @@ export type Article = {
     UserID: number
     CreatedAt: string
     UpdatedAt: string
+    Categories: Category[]
 }
 
 export type Work = {
