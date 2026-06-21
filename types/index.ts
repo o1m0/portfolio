@@ -15,11 +15,12 @@ export type Article = {
 
 export type Work = {
     ID: number
-	Title: string
-	Description: string
-	GithubURL: string
-	DemoURL: string
-	ImageURL: string
+    Title: string
+    Description: string
+    GithubURL: string
+    DemoURL: string
+    ImageURL: string
     CreatedAt: string
     UpdatedAt: string
+    Categories: Category[]
 }

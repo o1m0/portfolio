@@ -20,7 +20,7 @@ export default function WorksSection() {
     return (
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {works.map((work) => (
-                <div key={work.ID} className="border border-border rounded-lg overflow-hidden">
+                <div key={work.ID} className="border border-border rounded-lg overflow-hidden shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md">
                     {work.ImageURL && (
                         <NextImage
                             src={work.ImageURL}
@@ -48,6 +48,15 @@ export default function WorksSection() {
                             </div>
                         </div>
                         <p className="text-sm text-muted-foreground leading-loose">{work.Description}</p>
+                        {work.Categories && work.Categories.length > 0 && (
+                            <div className="flex gap-2">
+                                {work.Categories.map((category) => (
+                                    <span key={category.ID} className="text-xs border border-border px-2 py-0.5 rounded-full text-muted-foreground">
+                                        {category.Name}
+                                    </span>
+                                ))}
+                            </div>
+                        )}
                     </div>
                 </div>
             ))}
