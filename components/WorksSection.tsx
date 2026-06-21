@@ -5,7 +5,7 @@ import { Work } from "@/types"
 import NextImage from 'next/image'
 import Link from 'next/link'
 
-export default function WorksSection({ categoryId, search, sort }: { categoryId?: number, search?: string, sort?: string }) {
+export default function WorksSection({ categoryId, search, sort, page }: { categoryId?: number, search?: string, sort?: string, page?: number }) {
     const [works, setWorks] = useState<Work[]>([])
     const [mounted, setMounted] = useState(false)
 
@@ -15,11 +15,12 @@ export default function WorksSection({ categoryId, search, sort }: { categoryId?
         if (categoryId) params.append("category_id", String(categoryId))
         if (search) params.append("search", search)
         if (sort) params.append("sort", sort)
+        if (page) params.append("page", String(page))
         const url = `http://localhost:8080/works${params.toString() ? '?' + params.toString() : ''}`
         fetch(url)
             .then(res => res.json())
             .then(data => setWorks(data))
-    }, [categoryId, search, sort])
+    }, [categoryId, search, sort, page])
 
     if (!mounted) return null
 
