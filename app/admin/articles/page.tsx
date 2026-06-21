@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react"
 import { Article } from "@/types"
 import Link from 'next/link'
+import ReactMarkdown from 'react-markdown'
 
 type Category = {
     ID: number
@@ -101,12 +102,17 @@ const handleCreateCategory = async () => {
                     onChange={(e) => setTitle(e.target.value)}
                     className="w-full border border-border px-3 py-2 text-sm rounded"
                 />
-                <textarea
-                    placeholder="本文"
-                    value={body}
-                    onChange={(e) => setBody(e.target.value)}
-                    className="w-full border border-border px-3 py-2 text-sm rounded h-40"
-                />
+<div className="grid grid-cols-2 gap-4">
+    <textarea
+        placeholder="本文（マークダウン）"
+        value={body}
+        onChange={(e) => setBody(e.target.value)}
+        className="w-full border border-border px-3 py-2 text-sm rounded h-96 font-mono"
+    />
+    <div className="border border-border rounded p-4 overflow-y-auto h-96 prose prose-sm">
+        <ReactMarkdown>{body}</ReactMarkdown>
+    </div>
+</div>
                 <div className="flex gap-2">
     <input
         type="text"
