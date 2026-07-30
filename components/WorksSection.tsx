@@ -1,76 +1,75 @@
-"use client"
+import { getLocale, getTranslations } from "next-intl/server";
+import { Link } from "@/i18n/navigation";
+import Reveal from "./Reveal";
+import CompositionChart, { TONE_VARS } from "./CompositionChart";
+import { getAllWorks } from "@/lib/content";
+import type { Locale } from "@/i18n/routing";
 
-import { useState, useEffect } from "react"
-import { Work } from "@/types"
-import NextImage from 'next/image'
-import Link from 'next/link'
+function computeComposition(categories: string[][]) {
+  const counts = new Map<string, number>();
+  categories.flat().forEach((c) => {
+    counts.set(c, (counts.get(c) ?? 0) + 1);
+  });
+  const total = Array.from(counts.values()).reduce((a, b) => a + b, 0);
+  return Array.from(counts.entries())
+    .map(([name, count]) => ({
+      name,
+      pct: total > 0 ? Math.round((count / total) * 100) : 0,
+    }))
+    .sort((a, b) => b.pct - a.pct);
+}
 
-export default function WorksSection({ categoryId, search, sort, page }: { categoryId?: number, search?: string, sort?: string, page?: number }) {
-    const [works, setWorks] = useState<Work[]>([])
-    const [mounted, setMounted] = useState(false)
+export default async function WorksSection() {
+  const t = await getTranslations("WorksSection");
+  const locale = (await getLocale()) as Locale;
+  const works = getAllWorks(locale);
+  const composition = computeComposition(works.map((w) => w.categories));
+  const compositionLabel = composition
+    .map((c) => `${c.name} ${c.pct}%`)
+    .join(", ");
 
-    useEffect(() => {
-        setMounted(true)
-        const params = new URLSearchParams()
-        if (categoryId) params.append("category_id", String(categoryId))
-        if (search) params.append("search", search)
-        if (sort) params.append("sort", sort)
-        if (page) params.append("page", String(page))
-        const url = `http://localhost:8080/works${params.toString() ? '?' + params.toString() : ''}`
-        fetch(url)
-            .then(res => res.json())
-            .then(data => setWorks(data))
-    }, [categoryId, search, sort, page])
+  return (
+    <Reveal id="works">
+      <h2>{t("heading")}</h2>
 
-    if (!mounted) return null
-
-    return (
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            {works.map((work) => (
-                <div key={work.ID} className="border border-border rounded-lg overflow-hidden shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md">
-                    <Link href={`/works/${work.ID}`}>
-                        {work.ImageURL && (
-                            <NextImage
-                                src={work.ImageURL}
-                                alt={work.Title}
-                                width={600}
-                                height={400}
-                                className="w-full object-cover"
-                                style={{ height: '200px' }}
-                            />
-                        )}
-                    </Link>
-                    <div className="p-4 space-y-2">
-                        <div className="flex justify-between items-start">
-                            <Link href={`/works/${work.ID}`}>
-                                <h3 className="text-sm font-medium hover:underline">{work.Title}</h3>
-                            </Link>
-                            <div className="flex gap-4">
-                                {work.DemoURL && (
-                                    <a href={work.DemoURL} target="_blank" className="text-xs text-muted-foreground">
-                                        Demo →
-                                    </a>
-                                )}
-                                {work.GithubURL && (
-                                    <a href={work.GithubURL} target="_blank" className="text-xs text-muted-foreground">
-                                        GitHub →
-                                    </a>
-                                )}
-                            </div>
-                        </div>
-                        <p className="text-sm text-muted-foreground leading-loose">{work.Description}</p>
-                        {work.Categories && work.Categories.length > 0 && (
-                            <div className="flex gap-2">
-                                {work.Categories.map((category) => (
-                                    <span key={category.ID} className="text-xs border border-border px-2 py-0.5 rounded-full text-muted-foreground">
-                                        {category.Name}
-                                    </span>
-                                ))}
-                            </div>
-                        )}
-                    </div>
-                </div>
+      {composition.length > 0 && (
+        <div className="comp">
+          <p className="comp-caption">
+            {t("compositionCaption", { count: works.length })}
+          </p>
+          <CompositionChart
+            composition={composition}
+            ariaLabel={t("compositionAriaLabel", { label: compositionLabel })}
+          />
+          <ul className="comp-legend">
+            {composition.map((c, i) => (
+              <li key={c.name}>
+                <span
+                  className="swatch"
+                  style={{ background: TONE_VARS[i % TONE_VARS.length] }}
+                />
+                {c.name}
+                <span className="pct mono">{c.pct}%</span>
+              </li>
             ))}
+          </ul>
         </div>
-    )
+      )}
+
+      {works.map((work) => (
+        <div className="work" key={work.slug}>
+          <div className="title">{work.title}</div>
+          <div className="stack mono">{work.stack.join(" · ")}</div>
+          <p>{work.summary}</p>
+          <Link
+            className="back-link"
+            style={{ margin: "14px 0 0" }}
+            href={`/works/${work.slug}`}
+          >
+            {t("readMore")} →
+          </Link>
+        </div>
+      ))}
+    </Reveal>
+  );
 }

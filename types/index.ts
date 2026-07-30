@@ -1,26 +1,22 @@
-export type Category = {
-    ID: number
-    Name: string
+export type Work = {
+  slug: string
+  title: string
+  date: string
+  stack: string[]
+  categories: string[]
+  summary: string
+  problem: string
+  actions: string[]
+  learning: string
+  githubUrl?: string
+  demoUrl?: string
 }
 
 export type Article = {
-    ID: number
-    Title: string
-    Body: string
-    UserID: number
-    CreatedAt: string
-    UpdatedAt: string
-    Categories: Category[]
-}
-
-export type Work = {
-    ID: number
-    Title: string
-    Description: string
-    GithubURL: string
-    DemoURL: string
-    ImageURL: string
-    CreatedAt: string
-    UpdatedAt: string
-    Categories: Category[]
+  slug: string
+  title: string
+  date: string
+  categories: string[]
+  summary: string
+  body: string
 }

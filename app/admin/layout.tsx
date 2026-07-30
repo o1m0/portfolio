@@ -1,19 +1,28 @@
-import Link from "next/link"
+import type { Metadata } from "next"
+import Script from "next/script"
+import "../globals.css"
+import { geistSans, geistMono } from "@/lib/fonts"
+import { NO_FLASH_THEME_SCRIPT } from "@/lib/theme-script"
 
-export default function AdminLayout({ children }: { children: React.ReactNode }) {
-    return (
-        <div>
-            <nav className="fixed top-0 left-0 right-0 border-b border-border bg-background z-50">
-                <div className="max-w-2xl mx-auto px-6 py-4 flex gap-6 items-center">
-                    <Link href="/admin/articles" className="text-xs text-muted-foreground hover:text-foreground">
-                        Articles
-                    </Link>
-                    <Link href="/admin/works" className="text-xs text-muted-foreground hover:text-foreground">
-                        Works
-                    </Link>
-                </div>
-            </nav>
-            {children}
-        </div>
-    )
+export const metadata: Metadata = {
+  title: "Haru Oba — Admin",
+  robots: { index: false, follow: false },
+}
+
+export default function AdminRootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode
+}>) {
+  return (
+    <html lang="ja" suppressHydrationWarning>
+      <body className={`${geistSans.variable} ${geistMono.variable}`}>
+        <Script id="no-flash-theme" strategy="beforeInteractive">
+          {NO_FLASH_THEME_SCRIPT}
+        </Script>
+        <div className="grain" aria-hidden="true" />
+        {children}
+      </body>
+    </html>
+  )
 }

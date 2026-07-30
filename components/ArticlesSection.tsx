@@ -1,56 +1,41 @@
-"use client"
+import { getLocale, getTranslations } from "next-intl/server";
+import { Link } from "@/i18n/navigation";
+import Reveal from "./Reveal";
+import { getAllArticles } from "@/lib/content";
+import type { Locale } from "@/i18n/routing";
 
-import { useState, useEffect } from "react"
-import { Article } from "@/types"
-import Link from "next/link"
-import { formatDate } from "@/lib/utils"
+const PREVIEW_COUNT = 3;
 
-export default function ArticlesSection({ showAllLink = true, categoryId, search, sort, page }: { showAllLink?: boolean, categoryId?: number, search?: string, sort?: string, page?: number }) {
-    const [articles, setArticles] = useState<Article[]>([])
-    const [mounted, setMounted] = useState(false)
+export default async function ArticlesSection() {
+  const t = await getTranslations("ArticlesSection");
+  const locale = (await getLocale()) as Locale;
+  const articles = getAllArticles(locale).slice(0, PREVIEW_COUNT);
 
-    useEffect(() => {
-        setMounted(true)
-        const params = new URLSearchParams()
-        if (categoryId) params.append("category_id", String(categoryId))
-        if (search) params.append("search", search)
-        if (sort) params.append("sort", sort)
-        if (page) params.append("page", String(page))
-        const url = `http://localhost:8080/articles${params.toString() ? '?' + params.toString() : ''}`
-        fetch(url)
-            .then(res => res.json())
-            .then(data => setArticles(data))
-    }, [categoryId, search, sort, page])
+  if (articles.length === 0) return null;
 
-    if (!mounted) return null
+  return (
+    <Reveal id="articles">
+      <div className="sec-head-row">
+        <h2>{t("heading")}</h2>
+        <Link className="view-toggle" href="/articles">
+          {t("viewAll")}
+        </Link>
+      </div>
 
-    return (
-        <div className="space-y-6">
-            {articles.map((article) => (
-                <Link href={`/articles/${article.ID}`} key={article.ID} className="block group">
-                    <div className="space-y-1">
-                        <div className="flex justify-between items-center">
-                            <h3 className="text-sm font-medium group-hover:underline">{article.Title}</h3>
-                            <span className="text-xs text-muted-foreground">{formatDate(article.CreatedAt)}</span>
-                        </div>
-                        <p className="text-xs text-muted-foreground">{article.Body.slice(0, 80)}...</p>
-                        {article.Categories && article.Categories.length > 0 && (
-                            <div className="flex gap-2">
-                                {article.Categories.map((category) => (
-                                    <span key={category.ID} className="text-xs border border-border px-2 py-0.5 rounded-full text-muted-foreground">
-                                        {category.Name}
-                                    </span>
-                                ))}
-                            </div>
-                        )}
-                    </div>
-                </Link>
-            ))}
-            {showAllLink && (
-                <Link href="/articles" className="text-xs text-muted-foreground hover:text-foreground">
-                    すべての記事を見る →
-                </Link>
-            )}
+      {articles.map((article) => (
+        <div className="work" key={article.slug}>
+          <div className="title">{article.title}</div>
+          <div className="stack mono">{article.categories.join(" · ")}</div>
+          <p>{article.summary}</p>
+          <Link
+            className="back-link"
+            style={{ margin: "14px 0 0" }}
+            href={`/articles/${article.slug}`}
+          >
+            {t("read")} →
+          </Link>
         </div>
-    )
+      ))}
+    </Reveal>
+  );
 }

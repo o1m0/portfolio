@@ -1,0 +1,115 @@
+{
+  "Metadata": {
+    "siteTitle": "Haru Oba",
+    "siteDescription": "Software Engineer — self-taught, backend-focused",
+    "articlesTitle": "Articles — Haru Oba",
+    "articlesDescription": "Notes on backend development, databases, and security from Haru Oba's self-taught engineering journey."
+  },
+  "Nav": {
+    "about": "About",
+    "career": "Career",
+    "skills": "Skills",
+    "works": "Works",
+    "articles": "Articles",
+    "contact": "Contact",
+    "searchLabel": "Search",
+    "searchAriaLabel": "Open quick navigation",
+    "menuAriaLabel": "Toggle menu"
+  },
+  "CommandPalette": {
+    "dialogAriaLabel": "Quick navigation",
+    "placeholder": "Search pages… (Esc to close)",
+    "empty": "No results found",
+    "hintSection": "Section",
+    "hintPage": "Page"
+  },
+  "LocaleSwitcher": {
+    "label": "Language",
+    "ja": "日本語",
+    "en": "English"
+  },
+  "ThemeToggle": {
+    "ariaLabel": "Toggle dark / light theme"
+  },
+  "Home": {
+    "eyebrow": "Software Engineer",
+    "role": "Backend Engineer · Self-taught / Osaka Institute of Technology, Dept. of Information & Intelligence (on leave)",
+    "bio": "Studying backend development on my own while building OSHIATO, an SNS focused on keeping records. Mainly working in Go, and learning database design and security along the way.",
+    "contactHeading": "Contact",
+    "footer": "© 2026 Haru Oba"
+  },
+  "CareerTimeline": {
+    "heading": "Career",
+    "entries": [
+      {
+        "year": "2021",
+        "text": "Enrolled in the Science & Engineering course at Kobe Municipal Institute of Technology",
+        "note": "Competed in robotics contests through the school's science & tech club",
+        "achievements": [
+          "Japan Microcomputer Car Rally, Kinki regional — CameraClass, 3-time champion",
+          "Japan Microcomputer Car Rally, national — CameraClass, 1st place",
+          "Micromouse Kansai regional — Special Award",
+          "All Japan Micromouse Contest, semifinal division — Special Award",
+          "Kobe City Award for Students"
+        ]
+      },
+      {
+        "year": "2024",
+        "text": "Enrolled at Osaka Institute of Technology, Faculty of Information Science, Dept. of Information & Intelligence"
+      },
+      {
+        "year": "2026",
+        "text": "Took a leave of absence to deepen backend knowledge and build personal projects",
+        "note": "Now",
+        "current": true
+      }
+    ]
+  },
+  "SkillsChart": {
+    "heading": "Skills",
+    "viewTable": "View as table",
+    "viewChart": "View as chart",
+    "chartCaption": "Self-assessed proficiency by technology (0–100)",
+    "tableCaption": "Self-assessed proficiency by technology",
+    "colSkill": "Skill",
+    "colCategory": "Category",
+    "colLevel": "Level",
+    "barAriaLabel": "{name}, {category}, proficiency {level}",
+    "nextLabel": "Up next",
+    "nextValue": "Docker, AWS, Nginx, GitHub Actions / CI-CD"
+  },
+  "WorksSection": {
+    "heading": "Works",
+    "compositionCaption": "Technology breakdown across {count, plural, one {# project} other {# projects}}",
+    "compositionAriaLabel": "Technology composition: {label}",
+    "readMore": "Read more"
+  },
+  "ArticlesSection": {
+    "heading": "Articles",
+    "viewAll": "View all",
+    "read": "Read"
+  },
+  "ArticlesPage": {
+    "backHome": "← Back home",
+    "title": "Articles",
+    "read": "Read"
+  },
+  "ArticleDetailPage": {
+    "backList": "← Back to Articles",
+    "fallbackCategory": "Article"
+  },
+  "WorkDetailPage": {
+    "backHome": "← Back to Works",
+    "eyebrow": "Work",
+    "problemHeading": "The problem",
+    "actionsHeading": "What I did",
+    "learningHeading": "What I learned",
+    "linksHeading": "Links"
+  },
+  "NotFound": {
+    "eyebrow": "Error",
+    "title": "404",
+    "body": "The page you're looking for couldn't be found. Double-check the URL, or start again from the home page.",
+    "backHome": "← Back home"
+  }
+}

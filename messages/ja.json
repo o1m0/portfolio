@@ -1,0 +1,115 @@
+{
+  "Metadata": {
+    "siteTitle": "Haru Oba",
+    "siteDescription": "Software Engineer — Backend志向で独学中",
+    "articlesTitle": "Articles — Haru Oba",
+    "articlesDescription": "バックエンド開発・データベース・セキュリティについて、独学エンジニアHaru Obaが書いた記事。"
+  },
+  "Nav": {
+    "about": "About",
+    "career": "Career",
+    "skills": "Skills",
+    "works": "Works",
+    "articles": "Articles",
+    "contact": "Contact",
+    "searchLabel": "検索",
+    "searchAriaLabel": "クイックナビゲーションを開く",
+    "menuAriaLabel": "メニューを開閉する"
+  },
+  "CommandPalette": {
+    "dialogAriaLabel": "クイックナビゲーション",
+    "placeholder": "ページを検索…（Escで閉じる）",
+    "empty": "見つかりませんでした",
+    "hintSection": "セクション",
+    "hintPage": "ページ"
+  },
+  "LocaleSwitcher": {
+    "label": "言語切り替え",
+    "ja": "日本語",
+    "en": "English"
+  },
+  "ThemeToggle": {
+    "ariaLabel": "ダーク/ライトテーマを切り替え"
+  },
+  "Home": {
+    "eyebrow": "Software Engineer",
+    "role": "バックエンドエンジニア ・ 独学中 / 大阪工業大学 情報知能学科（休学中）",
+    "bio": "独学でバックエンドの知識を深めながら、記録に特化したSNS「OSHIATO」を開発しています。Goを用いたバックエンド開発を中心に、データベース設計やセキュリティについても学習を進めています。",
+    "contactHeading": "連絡先",
+    "footer": "© 2026 Haru Oba"
+  },
+  "CareerTimeline": {
+    "heading": "キャリア",
+    "entries": [
+      {
+        "year": "2021",
+        "text": "神戸市立科学技術高等学校 科学工学科 入学",
+        "note": "科学技術研究会にてロボットをはじめとする競技に出場",
+        "achievements": [
+          "ジャパンマイコンカーラリー近畿地区大会 CameraClass 3連覇",
+          "ジャパンマイコンカーラリー全国大会 CameraClass 優勝",
+          "マイクロマウス関西地区大会 マイクロマウス部門 特別賞",
+          "全日本マイクロマウス大会 セミファイナル部門 特別賞",
+          "神戸市児童生徒賞 受賞"
+        ]
+      },
+      {
+        "year": "2024",
+        "text": "大阪工業大学 情報学部 情報知能学科 入学"
+      },
+      {
+        "year": "2026",
+        "text": "休学し、バックエンドの知識を深め個人開発を進めている",
+        "note": "Now",
+        "current": true
+      }
+    ]
+  },
+  "SkillsChart": {
+    "heading": "スキル一覧",
+    "viewTable": "表で見る",
+    "viewChart": "グラフで見る",
+    "chartCaption": "技術スタックごとの自己評価による習熟度（0〜100）",
+    "tableCaption": "技術スタックごとの自己評価による習熟度",
+    "colSkill": "スキル",
+    "colCategory": "分類",
+    "colLevel": "習熟度",
+    "barAriaLabel": "{name}、{category}、習熟度{level}",
+    "nextLabel": "次に",
+    "nextValue": "Docker, AWS, Nginx, GitHub Actions / CI-CD"
+  },
+  "WorksSection": {
+    "heading": "成果物一覧",
+    "compositionCaption": "{count, plural, other {#つ}}のプロジェクトで使った技術の内訳",
+    "compositionAriaLabel": "技術構成比: {label}",
+    "readMore": "詳しく見る"
+  },
+  "ArticlesSection": {
+    "heading": "記事一覧",
+    "viewAll": "すべて見る",
+    "read": "読む"
+  },
+  "ArticlesPage": {
+    "backHome": "← ホームに戻る",
+    "title": "書いたもの",
+    "read": "読む"
+  },
+  "ArticleDetailPage": {
+    "backList": "← Articlesに戻る",
+    "fallbackCategory": "Article"
+  },
+  "WorkDetailPage": {
+    "backHome": "← Worksに戻る",
+    "eyebrow": "Work",
+    "problemHeading": "課題",
+    "actionsHeading": "やったこと",
+    "learningHeading": "学び",
+    "linksHeading": "リンク"
+  },
+  "NotFound": {
+    "eyebrow": "Error",
+    "title": "404",
+    "body": "お探しのページは見つかりませんでした。URLをご確認いただくか、ホームからやり直してください。",
+    "backHome": "← ホームに戻る"
+  }
+}
