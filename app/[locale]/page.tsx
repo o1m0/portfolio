@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import { hasLocale } from "next-intl";
 import { getTranslations, setRequestLocale } from "next-intl/server";
+import HeroSpotlight from "@/components/HeroSpotlight";
 import CareerTimeline from "@/components/CareerTimeline";
 import SkillsChart from "@/components/SkillsChart";
 import WorksSection from "@/components/WorksSection";
@@ -25,6 +26,7 @@ export default async function Home({
   return (
     <div className="wrap" id="view-home">
       <section id="about" className="hero-intro">
+        <HeroSpotlight />
         <p className="eyebrow">{t("eyebrow")}</p>
         <h1 className="name">Haru Oba</h1>
         <p className="role">{t("role")}</p>

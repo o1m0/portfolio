@@ -610,6 +610,57 @@ button:focus-visible {
   }
 }
 
+/* hero cursor-tracking dot grid */
+@property --spot-x {
+  syntax: "<percentage>";
+  inherits: true;
+  initial-value: 50%;
+}
+@property --spot-y {
+  syntax: "<percentage>";
+  inherits: true;
+  initial-value: 50%;
+}
+.hero-intro {
+  position: relative;
+  isolation: isolate;
+  transition:
+    --spot-x 0.15s linear,
+    --spot-y 0.15s linear;
+}
+.hero-intro::before,
+.hero-intro::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-size: 24px 24px;
+}
+.hero-intro::before {
+  background-image: radial-gradient(circle, var(--line) 1px, transparent 1px);
+  opacity: 0.18;
+}
+.hero-intro::after {
+  background-image: radial-gradient(circle, var(--accent) 1.4px, transparent 1.4px);
+  opacity: 0.9;
+  -webkit-mask-image: radial-gradient(
+    220px circle at var(--spot-x, 50%) var(--spot-y, 50%),
+    black 0%,
+    transparent 100%
+  );
+  mask-image: radial-gradient(
+    220px circle at var(--spot-x, 50%) var(--spot-y, 50%),
+    black 0%,
+    transparent 100%
+  );
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-intro::after {
+    display: none;
+  }
+}
+
 /* secondary pages: work detail / articles / 404 */
 .back-link {
   display: inline-flex;
