@@ -22,5 +22,5 @@ export function proxy(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/admin/:path*", "/((?!api|_next|_vercel|.*\\..*).*)"],
+  matcher: ["/admin/:path*", "/((?!api|_next|_vercel|icon|apple-icon|.*\\..*).*)"],
 }
