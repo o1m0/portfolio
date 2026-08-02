@@ -69,9 +69,27 @@ export default async function LocaleLayout({
     href: `/works/${work.slug}`,
   }))
 
+  const personJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: SITE_NAME,
+    alternateName: ["大庭羽流", "Oba Haru", "obaharu", "haruoba"],
+    url: SITE_URL,
+    sameAs: [
+      "https://github.com/o1m0",
+      "https://x.com/0ba_dev",
+      "https://zenn.dev/0ba_dev",
+      "https://www.instagram.com/0ba.dev/",
+    ],
+  }
+
   return (
     <html lang={activeLocale} suppressHydrationWarning>
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
+        />
         <Script id="no-flash-theme" strategy="beforeInteractive">
           {NO_FLASH_THEME_SCRIPT}
         </Script>

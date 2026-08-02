@@ -28,7 +28,9 @@ export default async function Home({
       <section id="about" className="hero-intro">
         <HeroSpotlight />
         <p className="eyebrow">{t("eyebrow")}</p>
-        <h1 className="name">Haru Oba</h1>
+        <h1 className="name">
+          Haru Oba<span className="kanji-name">大庭羽流</span>
+        </h1>
         <p className="role">{t("role")}</p>
         <p className="bio">{t("bio")}</p>
       </section>

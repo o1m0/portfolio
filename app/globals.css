@@ -759,6 +759,29 @@ h1.name {
   text-wrap: balance;
 }
 
+h1.name .kanji-name {
+  display: inline-flex;
+  align-items: center;
+  vertical-align: middle;
+  transform: translateY(-0.06em);
+  font-family: var(--font-mono, ui-monospace), monospace;
+  font-weight: 500;
+  font-size: 0.24em;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+  background: var(--accent-wash);
+  padding: 0.5em 0.8em;
+  border-radius: 100px;
+  margin-left: 0.28em;
+}
+@media (max-width: 640px) {
+  h1.name .kanji-name {
+    display: inline-flex;
+    margin-top: 10px;
+    transform: none;
+  }
+}
+
 .role {
   font-size: 14.5px;
   color: var(--muted);
