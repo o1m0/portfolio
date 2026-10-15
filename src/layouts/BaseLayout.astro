@@ -1,4 +1,5 @@
 ---
+import { Font } from "astro:assets";
 import "../styles/global.css";
 
 interface Props {
@@ -18,6 +19,8 @@ const year = new Date().getFullYear();
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
     <meta name="description" content={description} />
+    <Font cssVariable="--font-heading" />
+    <Font cssVariable="--font-mono" />
   </head>
   <body>
     <header>

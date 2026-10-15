@@ -16,7 +16,6 @@
         --color-border: #262626;
         --color-accent: #F97316;
         --color-accent-text: #F97316;
-        --max-width: 680px;
     }
 }
 
@@ -34,6 +33,19 @@ main {
     max-width: var(--max-width);
     margin-inline: auto;
     padding-inline: 16px;
+}
+
+h1,
+h2,
+h3 {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    line-height: 1.4;
+}
+
+code,
+pre {
+    font-family: var(--font-mono);
 }
 
 a {
