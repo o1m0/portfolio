@@ -1,0 +1,67 @@
+---
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  work: CollectionEntry<'works'>;
+}
+
+const { work } = Astro.props;
+const { title, summary, status, stack } = work.data;
+---
+
+<a class="row" href={`/works/${work.id}/`}>
+  <div class="row-head">
+    <span class="title">{title}</span>
+    <span class="status">{status}<span class="arrow" aria-hidden="true">→</span></span>
+  </div>
+  <p class="summary">{summary}</p>
+  <p class="stack">{stack.join(' / ')}</p>
+</a>
+
+<style>
+  /* 行全体をリンクにして、どこを押しても詳細に飛べるようにする */
+  .row {
+    display: block;
+    padding-block: 20px;
+    border-bottom: 1px solid var(--color-border);
+    color: inherit;
+    text-decoration: none;
+  }
+  .row-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 16px;
+  }
+  .title {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 1.25rem;
+  }
+  .status {
+    flex-shrink: 0;
+    color: var(--color-muted);
+    font-size: 0.875rem;
+  }
+  .arrow {
+    display: inline-block;
+    margin-left: 8px;
+    transition: transform 0.2s;
+  }
+  .row:hover .title {
+    color: var(--color-accent-text);
+  }
+  .row:hover .arrow {
+    transform: translateX(4px);
+  }
+  .summary {
+    margin: 4px 0 0;
+    color: var(--color-muted);
+  }
+  .stack {
+    margin: 4px 0 0;
+    color: var(--color-muted);
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
+  }
+</style>

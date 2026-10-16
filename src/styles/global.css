@@ -6,6 +6,8 @@
     --color-accent: #EA580C;
     --color-accent-text: #C2410C;
     --max-width: 680px;
+    --wide-width: 1080px;
+    --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -27,12 +29,28 @@ body {
     font-family: system-ui, sans-serif;
     line-height: 1.8;
     /* 行の高さ。日本語は少し広めが読みやすい */
+    overflow-wrap: anywhere;
+    /* 長い URL などが画面からはみ出さないように、必要なら途中で折り返す */
 }
 
-main {
+/* 本文の幅（読みやすさ優先）と、ヘッダーやトップページの幅（見せる優先）の 2 種類 */
+.container {
     max-width: var(--max-width);
     margin-inline: auto;
     padding-inline: 16px;
+}
+
+.container-wide {
+    max-width: var(--wide-width);
+    margin-inline: auto;
+    padding-inline: 16px;
+}
+
+@media (min-width: 768px) {
+    .container,
+    .container-wide {
+        padding-inline: 32px;
+    }
 }
 
 h1,
@@ -43,11 +61,77 @@ h3 {
     line-height: 1.4;
 }
 
+/* 見出しの大きさ。差をつけすぎず、h1 > h2 > h3 がわかる程度にする */
+h1 {
+    font-size: clamp(1.75rem, 6vw, 2rem);
+    margin-block: 0 16px;
+}
+
+h2 {
+    font-size: 1.375rem;
+    margin-block: 48px 16px;
+}
+
+h3 {
+    font-size: 1.125rem;
+    margin-block: 32px 8px;
+}
+
 code,
 pre {
     font-family: var(--font-mono);
 }
 
+/* 文中のコード */
+:not(pre) > code {
+    padding: 0.1em 0.4em;
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    font-size: 0.9em;
+}
+
+pre {
+    padding: 16px;
+    overflow-x: auto;
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    font-size: 0.875rem;
+    line-height: 1.6;
+}
+
+/* 文中のリンクは下線つき。ナビなどは各コンポーネントで下線を消す */
 a {
     color: var(--color-accent-text);
+    text-underline-offset: 0.2em;
+}
+
+a:hover {
+    color: var(--color-accent);
+}
+
+/* スクロールで要素がふわっと出る。JS が動いたときだけ隠す（JS が動かなくても内容は見える） */
+.js [data-reveal] {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.8s var(--ease-out), transform 0.8s var(--ease-out);
+}
+
+.js [data-reveal].is-visible {
+    opacity: 1;
+    transform: none;
+}
+
+/* OS で「視差効果を減らす」を選んでいる人には、動きを止める */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation: none !important;
+        transition: none !important;
+    }
+
+    .js [data-reveal] {
+        opacity: 1;
+        transform: none;
+    }
 }

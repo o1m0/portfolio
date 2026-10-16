@@ -1,0 +1,45 @@
+---
+// 「01 ─── About」のような、番号つきのセクション見出し
+interface Props {
+  num: string;
+  title: string;
+}
+
+const { num, title } = Astro.props;
+---
+
+<h2 class="section-title">
+  <span class="num">{num}</span>
+  <span class="line" aria-hidden="true"></span>
+  <span>{title}</span>
+</h2>
+
+<style>
+  .section-title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-block: 0 24px;
+    align-self: start;
+    font-size: 1.125rem;
+    letter-spacing: 0.02em;
+  }
+  .num {
+    color: var(--color-accent-text);
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+    font-weight: 400;
+  }
+  @media (min-width: 900px) {
+    .section-title {
+      margin-bottom: 0;
+      position: sticky;
+      top: 96px; /* 固定ヘッダーの下に、見出しを止めておく */
+    }
+  }
+  .line {
+    width: 40px;
+    height: 1px;
+    background: var(--color-muted);
+  }
+</style>

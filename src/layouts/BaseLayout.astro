@@ -5,11 +5,20 @@ import "../styles/global.css";
 interface Props {
   title: string;
   description: string;
+  // トップページのように、広い幅で見せたいページだけ true にする
+  wide?: boolean;
 }
 
-const { title, description } = Astro.props;
+const { title, description, wide = false } = Astro.props;
 
 const year = new Date().getFullYear();
+
+const navItems = [
+  { href: "/works/", label: "Works" },
+  { href: "/blog/", label: "Blog" },
+];
+// 今いるページのナビを強調する（/works/homestat/ でも Works を強調）
+const currentPath = Astro.url.pathname;
 ---
 
 <!doctype html>
@@ -21,20 +30,108 @@ const year = new Date().getFullYear();
     <meta name="description" content={description} />
     <Font cssVariable="--font-heading" />
     <Font cssVariable="--font-mono" />
+    <!-- 描画の前に実行して、JS が使えるときだけアニメーションの初期状態（非表示）にする -->
+    <script is:inline>document.documentElement.classList.add("js");</script>
   </head>
   <body>
-    <header>
-      <a href="/">o1m0</a>
-      <a href="/works">Works</a>
-      <a href="/blog">Blog</a>
+    <header class="site-header">
+      <div class="container-wide header-inner">
+        <a href="/" class="site-name">o1m0</a>
+        <nav aria-label="メイン">
+          {
+            navItems.map((item) => (
+              <a href={item.href} aria-current={currentPath.startsWith(item.href) ? "page" : undefined}>
+                {item.label}
+              </a>
+            ))
+          }
+        </nav>
+      </div>
     </header>
 
-    <main>
+    <main class={wide ? "container-wide" : "container"}>
       <slot />
     </main>
 
-    <footer>
-      <p>© {year} o1m0</p>
+    <footer class="site-footer">
+      <div class="container-wide footer-inner">
+        <p>© {year} Haru Oba (o1m0)</p>
+        <p>Built with Astro, hosted on Cloudflare Workers.</p>
+      </div>
     </footer>
+
+    <script>
+      // data-reveal がついた要素が画面に入ったら、is-visible をつけてふわっと出す
+      const observer = new IntersectionObserver(
+        (entries) => {
+          for (const entry of entries) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("is-visible");
+              observer.unobserve(entry.target); // 一度出したら監視をやめる
+            }
+          }
+        },
+        { rootMargin: "0px 0px -10% 0px" },
+      );
+      document.querySelectorAll("[data-reveal]").forEach((el) => observer.observe(el));
+    </script>
   </body>
 </html>
+
+<style>
+  /* スクロールしても上に固定し、後ろが少し透けるすりガラス風にする */
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: color-mix(in srgb, var(--color-bg) 80%, transparent);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+  .header-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-block: 20px;
+  }
+  .site-name {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    color: var(--color-text);
+    text-decoration: none;
+  }
+  nav {
+    display: flex;
+    gap: 24px;
+  }
+  nav a {
+    color: var(--color-muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  nav a:hover,
+  nav a[aria-current="page"] {
+    color: var(--color-text);
+  }
+  nav a[aria-current="page"] {
+    text-decoration: underline;
+    text-decoration-color: var(--color-accent);
+    text-decoration-thickness: 2px;
+    text-underline-offset: 0.4em;
+  }
+  main {
+    padding-block: 48px 64px;
+  }
+  .site-footer {
+    margin-top: 64px;
+    border-top: 1px solid var(--color-border);
+    color: var(--color-muted);
+    font-size: 0.8125rem;
+  }
+  .footer-inner {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 0 24px;
+  }
+</style>
