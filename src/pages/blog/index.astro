@@ -1,11 +1,8 @@
 ---
-import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getPosts } from '../../lib/content';
 
-// 本番（npm run build）では draft: true の記事を除く。開発サーバーでは下書きも表示する
-const posts = (await getCollection('blog', ({ data }) => import.meta.env.DEV || !data.draft)).sort(
-  (a, b) => b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf(),
-);
+const posts = await getPosts();
 ---
 
 <BaseLayout title="Blog | Haru Oba (o1m0)" description="Haru Oba の学習記録やつくったものの記録です。">

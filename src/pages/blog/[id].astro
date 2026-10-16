@@ -1,10 +1,11 @@
 ---
-import { getCollection, getEntry, render } from 'astro:content';
+import { getEntry, render } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getPosts } from '../../lib/content';
 
 // 一覧と同じ条件で、本番では下書きのページを作らない
 export async function getStaticPaths() {
-  const posts = await getCollection('blog', ({ data }) => import.meta.env.DEV || !data.draft);
+  const posts = await getPosts();
   return posts.map((post) => ({
     params: { id: post.id },
     props: { post },
