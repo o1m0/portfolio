@@ -10,6 +10,10 @@ export default defineConfig({
             cssVariable: '--font-heading',
             weights: [500, 700],
             fallbacks: ['sans-serif'],
+            // 日本語フォントでは自動の補正が約 2 倍になり、読み込み中の英字が巨大になるので切る
+            optimizedFallbacks: false,
+            // すぐ（約 100ms 以内）に届かなければ、そのページでは差し替えない。表示中に「ぴくっ」と変わるのを防ぐ
+            display: 'optional',
         },
         {
             provider: fontProviders.google(),
