@@ -1,22 +1,20 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import PostRow from '../../components/PostRow.astro';
 import { getPosts } from '../../lib/content';
 
 const posts = await getPosts();
 ---
 
 <BaseLayout title="Blog | Haru Oba (o1m0)" description="Haru Oba の学習記録やつくったものの記録です。">
-  <h1>Blog</h1>
+  <PageHeader eyebrow="Blog" title="学習と開発の記録" lead="調べたこと、つまずいたこと、作りながら考えたことを書いています。" />
   {posts.length === 0 && <p>まだ記事はありません。</p>}
   <ul class="posts">
     {
       posts.map((post) => (
         <li>
-          <time datetime={post.data.publishedAt.toISOString()}>
-            {post.data.publishedAt.toLocaleDateString('ja-JP')}
-          </time>
-          <a href={`/blog/${post.id}/`}>{post.data.title}</a>
-          {post.data.draft && <span class="draft">下書き</span>}
+          <PostRow post={post} showDescription />
         </li>
       ))
     }
@@ -27,17 +25,7 @@ const posts = await getPosts();
   .posts {
     list-style: none;
     padding: 0;
-  }
-  .posts li {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 4px 16px;
-    padding-block: 12px;
-    border-bottom: 1px solid var(--color-border);
-  }
-  .posts time,
-  .draft {
-    color: var(--color-muted);
-    font-size: 0.875rem;
+    margin: 0;
+    border-top: 1px solid var(--color-border);
   }
 </style>

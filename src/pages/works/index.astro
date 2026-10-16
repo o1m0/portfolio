@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHeader from '../../components/PageHeader.astro';
 import WorkCard from '../../components/WorkCard.astro';
 import { getWorks } from '../../lib/content';
 
@@ -7,7 +8,7 @@ const works = await getWorks();
 ---
 
 <BaseLayout title="Works | Haru Oba (o1m0)" description="Haru Oba が作ったもの、作っているものの一覧です。">
-  <h1>Works</h1>
+  <PageHeader eyebrow="Works" title="作ったもの・作っているもの" lead="自分の困りごとや興味から始めたプロダクトです。" />
   <ul class="works">
     {
       works.map((work) => (
@@ -23,6 +24,7 @@ const works = await getWorks();
   .works {
     list-style: none;
     padding: 0;
+    margin: 0;
     border-top: 1px solid var(--color-border);
   }
 </style>

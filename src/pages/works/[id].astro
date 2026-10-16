@@ -1,6 +1,7 @@
 ---
 import { getCollection, render } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHeader from '../../components/PageHeader.astro';
 
 // SSG なので、ビルド時に「どの URL のページを作るか」を全部列挙する
 export async function getStaticPaths() {
@@ -18,38 +19,78 @@ const { title, summary, problem, status, startedAt, stack, githubUrl, demoUrl } 
 
 <BaseLayout title={`${title} | Works | Haru Oba (o1m0)`} description={summary}>
   <article>
-    <h1>{title}</h1>
-    <p>{summary}</p>
+    <PageHeader eyebrow={`Work ・ ${status}`} title={title} lead={summary} back={{ href: '/works/', label: 'Works' }} />
 
-    <dl class="meta">
-      <dt>解決すること</dt>
-      <dd>{problem}</dd>
-      <dt>状態</dt>
-      <dd>{status}</dd>
-      <dt>開始日</dt>
-      <dd><time datetime={startedAt.toISOString()}>{startedAt.toLocaleDateString('ja-JP')}</time></dd>
-      <dt>技術</dt>
-      <dd>{stack.join(', ')}</dd>
-      {githubUrl && (<><dt>GitHub</dt><dd><a href={githubUrl}>{githubUrl}</a></dd></>)}
-      {demoUrl && (<><dt>デモ</dt><dd><a href={demoUrl}>{demoUrl}</a></dd></>)}
+    <dl class="facts">
+      <div class="fact fact-wide">
+        <dt>解決すること</dt>
+        <dd>{problem}</dd>
+      </div>
+      <div class="fact">
+        <dt>開始日</dt>
+        <dd><time datetime={startedAt.toISOString()}>{startedAt.toLocaleDateString('ja-JP')}</time></dd>
+      </div>
+      <div class="fact">
+        <dt>技術</dt>
+        <dd class="stack">{stack.map((s) => <span>{s}</span>)}</dd>
+      </div>
+      {
+        githubUrl && (
+          <div class="fact">
+            <dt>GitHub</dt>
+            <dd><a href={githubUrl}>リポジトリ ↗</a></dd>
+          </div>
+        )
+      }
+      {
+        demoUrl && (
+          <div class="fact">
+            <dt>デモ</dt>
+            <dd><a href={demoUrl}>動いているもの ↗</a></dd>
+          </div>
+        )
+      }
     </dl>
 
-    <Content />
+    <div class="prose">
+      <Content />
+    </div>
   </article>
 </BaseLayout>
 
 <style>
-  .meta {
+  /* 作品の基本情報：枠で囲まず、上下の線と小さなラベルで整理する */
+  .facts {
     display: grid;
-    grid-template-columns: max-content 1fr;
-    gap: 4px 16px;
-    padding: 16px;
-    border: 1px solid var(--color-border);
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 24px;
+    margin: 0 0 64px;
+    padding-block: 24px;
+    border-block: 1px solid var(--color-border);
   }
-  .meta dt {
+  .fact-wide {
+    grid-column: 1 / -1;
+  }
+  .fact dt {
+    margin-bottom: 4px;
     color: var(--color-muted);
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.04em;
   }
-  .meta dd {
+  .fact dd {
     margin: 0;
+  }
+  .stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .stack span {
+    padding: 2px 10px;
+    border-radius: 999px;
+    background: var(--color-surface);
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
   }
 </style>

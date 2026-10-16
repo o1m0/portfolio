@@ -1,0 +1,75 @@
+---
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  post: CollectionEntry<'blog'>;
+  // 一覧ページでは説明文も出す。トップでは出さない
+  showDescription?: boolean;
+}
+
+const { post, showDescription = false } = Astro.props;
+const { title, description, publishedAt, tags, draft } = post.data;
+---
+
+<a class="row" href={`/blog/${post.id}/`}>
+  <time datetime={publishedAt.toISOString()}>{publishedAt.toLocaleDateString('ja-JP')}</time>
+  <div class="body">
+    <span class="title">
+      {title}
+      {draft && <span class="draft">下書き</span>}
+    </span>
+    {showDescription && <p class="description">{description}</p>}
+    {showDescription && <p class="tags">{tags.map((tag) => `#${tag}`).join('  ')}</p>}
+  </div>
+</a>
+
+<style>
+  .row {
+    display: grid;
+    grid-template-columns: 7em 1fr;
+    gap: 4px 24px;
+    padding-block: 20px;
+    border-bottom: 1px solid var(--color-border);
+    color: inherit;
+    text-decoration: none;
+  }
+  @media (max-width: 480px) {
+    .row {
+      grid-template-columns: 1fr;
+    }
+  }
+  time {
+    padding-top: 0.15em;
+    color: var(--color-muted);
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+  }
+  .title {
+    font-weight: 700;
+    transition: color 0.2s;
+  }
+  .row:hover .title {
+    color: var(--color-accent-text);
+  }
+  .draft {
+    margin-left: 8px;
+    padding: 0 8px;
+    border: 1px solid var(--color-border);
+    border-radius: 999px;
+    color: var(--color-muted);
+    font-size: 0.75rem;
+    font-weight: 400;
+  }
+  .description {
+    margin: 4px 0 0;
+    color: var(--color-muted);
+    font-size: 0.9375rem;
+  }
+  .tags {
+    margin: 4px 0 0;
+    color: var(--color-muted);
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
+    white-space: pre;
+  }
+</style>
