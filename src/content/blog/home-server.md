@@ -3,7 +3,6 @@ title: 古いノートPCで自宅サーバーを立ててみた💪🏽
 description: ThinkPad X240 に Ubuntu Server を入れて、自宅サーバーとして動かすまでの道のり
 publishedAt: 2026-10-16
 tags: [infra, linux]
-draft: 
 relatedWork: homestat
 ---
 
