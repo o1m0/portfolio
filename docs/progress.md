@@ -12,7 +12,7 @@
 | デプロイ | Cloudflare Workers Builds（GitHub の main に push すると自動デプロイ） |
 | CSS | 普通の CSS（Tailwind は使わない） |
 | トップの並び | ヒーロー → About → Skills → Works → Blog → Contact（About と Skills は短く） |
-| ヒーロー | Haru Oba (o1m0) ／ Backend / Infra ・ 学生エンジニア ／ 気になったものには、ぜんぶかじりつく。 |
+| ヒーロー | Haru Oba (o1m0) ／ Backend ・ 学生エンジニア ／ 気になったものには、ぜんぶかじりつく。 |
 | フォント | 見出し：IBM Plex Sans JP（500、700）、本文：システムフォント、コード：IBM Plex Mono |
 | 本文の最大幅 | 680px |
 
@@ -44,6 +44,7 @@
 - [x] Content Collections（`src/content.config.ts`）、Works 一覧・詳細、Blog 一覧・詳細（本番では `draft: true` を除外）
 - [x] Works：homestat を掲載
 - [x] Blog：1 記事目「古いノートPCで自宅サーバーを立ててみた」を公開
+- [x] トップに About / Skills / Works / Blog / Contact。Works：OSHIATO を掲載
 
 ## 残っている小さな作業
 
@@ -63,8 +64,8 @@ Astro のページ・CSS は Claude が書き、本人はインフラの判断�
 | 1 | Content Collections | Claude | ✅ |
 | 2 | Works 一覧・詳細ページ | Claude | ✅ |
 | 3 | Blog 一覧・詳細ページ | Claude | ✅ |
-| 4 | トップに About / Skills / Works / Blog / Contact のセクション | Claude | **次** |
-| 5 | Works の中身：oshiato | 本人 | homestat は ✅ |
+| 4 | トップに About / Skills / Works / Blog / Contact のセクション | Claude | ✅ |
+| 5 | Works の中身：homestat、OSHIATO | 本人 | ✅（OSHIATO は構想段階。リポジトリと技術は未定） |
 | 6 | ブログ 1 記事目 | 本人 | ✅ |
 | 7 | 外部監視で SLO 99% を計測する（サービスの選定から） | 本人 | |
 | 8 | HTML が 193 KB ある問題（`@font-face` 245 個が HTML に入っている）と、HTML に etag がない問題を調べる | 本人 | |

@@ -1,12 +1,152 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const skills = [
+  { label: '学習中', items: ['Go', 'Linux（Ubuntu Server）'] },
+  { label: '大学の授業で使用', items: ['C', 'Java', 'Python'] },
+  { label: 'このサイトで使用', items: ['Astro', 'TypeScript', 'Cloudflare Workers'] },
+  { label: 'ツール', items: ['Git', 'Tailscale', 'tmux'] },
+];
+
+const contacts = [
+  { label: 'Email', url: 'mailto:contact@0ba.dev' },
+  { label: 'GitHub', url: 'https://github.com/o1m0' },
+  { label: 'Zenn', url: 'https://zenn.dev/0ba_dev' },
+  { label: 'AtCoder', url: 'https://atcoder.jp/users/O1M0' },
+  { label: 'X', url: 'https://x.com/0ba_dev' },
+  { label: 'Instagram', url: 'https://www.instagram.com/0ba.dev/' },
+];
+
+// 一覧ページと同じ並び順で、新しいものを 3 件だけ出す
+const works = (await getCollection('works'))
+  .sort(
+    (a, b) =>
+      (a.data.order ?? Infinity) - (b.data.order ?? Infinity) ||
+      b.data.startedAt.valueOf() - a.data.startedAt.valueOf(),
+  )
+  .slice(0, 3);
+
+const posts = (await getCollection('blog', ({ data }) => import.meta.env.DEV || !data.draft))
+  .sort((a, b) => b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf())
+  .slice(0, 3);
 ---
 
 <BaseLayout
-	title="Haru Oba (o1m0) | Portfolio"
-	description="Haru Oba のポートフォリオ。バックエンドとインフラが好きな学生エンジニアです。これまでの作品やブログを載せています。"
+  title="Haru Oba (o1m0) | Portfolio"
+  description="Haru Oba のポートフォリオ。Go のバックエンドエンジニアを目指す学生です。インフラにも興味があり、自宅サーバーを運用しています。作品やブログを載せています。"
 >
-	<h1>Haru Oba (o1m0)</h1>
-	<p>Backend / Infra ・ 学生エンジニア</p>
-	<p>気になったものには、ぜんぶかじりつく。</p>
+  <section class="hero">
+    <h1>Haru Oba (o1m0)</h1>
+    <p>Backend ・ 学生エンジニア</p>
+    <p>気になったものには、ぜんぶかじりつく。</p>
+  </section>
+
+  <section>
+    <h2>About</h2>
+    <p>
+      大阪工業大学 情報学部の 3 年生です。Go のバックエンドエンジニアを目指して勉強しています。
+      今は、古いノート PC で立てた自宅サーバーを触りながら、Linux やネットワークを学び直しています。
+    </p>
+  </section>
+
+  <section>
+    <h2>Skills</h2>
+    <dl class="skills">
+      {
+        skills.map((group) => (
+          <>
+            <dt>{group.label}</dt>
+            <dd>{group.items.join(', ')}</dd>
+          </>
+        ))
+      }
+    </dl>
+  </section>
+
+  <section>
+    <h2>Works</h2>
+    <ul class="list">
+      {
+        works.map((work) => (
+          <li>
+            <a href={`/works/${work.id}/`}>{work.data.title}</a>
+            <span class="muted">{work.data.summary}</span>
+          </li>
+        ))
+      }
+    </ul>
+    <a href="/works/">すべての作品 →</a>
+  </section>
+
+  <section>
+    <h2>Blog</h2>
+    <ul class="list">
+      {
+        posts.map((post) => (
+          <li>
+            <time class="muted" datetime={post.data.publishedAt.toISOString()}>
+              {post.data.publishedAt.toLocaleDateString('ja-JP')}
+            </time>
+            <a href={`/blog/${post.id}/`}>{post.data.title}</a>
+          </li>
+        ))
+      }
+    </ul>
+    <a href="/blog/">すべての記事 →</a>
+  </section>
+
+  <section>
+    <h2>Contact</h2>
+    <ul class="contacts">
+      {
+        contacts.map((contact) => (
+          <li>
+            <a href={contact.url}>{contact.label}</a>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
 </BaseLayout>
+
+<style>
+  section {
+    margin-block: 48px;
+  }
+  .hero {
+    margin-block: 64px;
+  }
+  .skills {
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    gap: 4px 16px;
+  }
+  .skills dt {
+    color: var(--color-muted);
+  }
+  .skills dd {
+    margin: 0;
+  }
+  .list,
+  .contacts {
+    list-style: none;
+    padding: 0;
+  }
+  .list li {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 16px;
+    padding-block: 8px;
+    border-bottom: 1px solid var(--color-border);
+  }
+  .contacts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 16px;
+  }
+  .muted {
+    color: var(--color-muted);
+    font-size: 0.875rem;
+  }
+</style>
