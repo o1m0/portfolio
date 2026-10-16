@@ -1,0 +1,46 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+// 本番（npm run build）では draft: true の記事を除く。開発サーバーでは下書きも表示する
+const posts = (await getCollection('blog', ({ data }) => import.meta.env.DEV || !data.draft)).sort(
+  (a, b) => b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf(),
+);
+---
+
+<BaseLayout title="Blog | Haru Oba (o1m0)" description="Haru Oba の学習記録やつくったものの記録です。">
+  <h1>Blog</h1>
+  {posts.length === 0 && <p>まだ記事はありません。</p>}
+  <ul class="posts">
+    {
+      posts.map((post) => (
+        <li>
+          <time datetime={post.data.publishedAt.toISOString()}>
+            {post.data.publishedAt.toLocaleDateString('ja-JP')}
+          </time>
+          <a href={`/blog/${post.id}/`}>{post.data.title}</a>
+          {post.data.draft && <span class="draft">下書き</span>}
+        </li>
+      ))
+    }
+  </ul>
+</BaseLayout>
+
+<style>
+  .posts {
+    list-style: none;
+    padding: 0;
+  }
+  .posts li {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 16px;
+    padding-block: 12px;
+    border-bottom: 1px solid var(--color-border);
+  }
+  .posts time,
+  .draft {
+    color: var(--color-muted);
+    font-size: 0.875rem;
+  }
+</style>
