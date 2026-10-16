@@ -41,6 +41,9 @@
   - 日本語フォントは約 120 個に分割されて配られる（`unicode-range`）。`preload` をつけると全部（242 個）先に読み込むので外した
 - [x] `public/_headers`：ハッシュつきのファイル（`/_astro/*`）を 1 年キャッシュ（`immutable`）。HTML と `public/` のファイルはデフォルト（毎回確認）のまま
 - [x] `CLAUDE.md`（実体は `AGENTS.md`）に分担と方針を書いた
+- [x] Content Collections（`src/content.config.ts`）、Works 一覧・詳細、Blog 一覧・詳細（本番では `draft: true` を除外）
+- [x] Works：homestat を掲載
+- [x] Blog：1 記事目「古いノートPCで自宅サーバーを立ててみた」を公開
 
 ## 残っている小さな作業
 
@@ -55,16 +58,16 @@ Astro のページ・CSS は Claude が書き、本人はインフラの判断�
 
 ## v0.1 公開までの残り
 
-| # | 作業 | 担当 |
-|---|---|---|
-| 1 | Content Collections：Work と Article のスキーマ（`src/content.config.ts`） | Claude |
-| 2 | Works 一覧・詳細ページ | Claude |
-| 3 | Blog 一覧・詳細ページ | Claude |
-| 4 | トップに About / Skills / Works / Blog / Contact のセクション | Claude |
-| 5 | Works の中身（homestat、oshiato） | 本人 |
-| 6 | ブログ 1 記事目（自宅サーバーの構築記録） | 本人 |
-| 7 | 外部監視で SLO 99% を計測する（サービスの選定から） | 本人 |
-| 8 | HTML が 193 KB ある問題（`@font-face` 245 個が HTML に入っている）と、HTML に etag がない問題を調べる | 本人 |
+| # | 作業 | 担当 | 状態 |
+|---|---|---|---|
+| 1 | Content Collections | Claude | ✅ |
+| 2 | Works 一覧・詳細ページ | Claude | ✅ |
+| 3 | Blog 一覧・詳細ページ | Claude | ✅ |
+| 4 | トップに About / Skills / Works / Blog / Contact のセクション | Claude | **次** |
+| 5 | Works の中身：oshiato | 本人 | homestat は ✅ |
+| 6 | ブログ 1 記事目 | 本人 | ✅ |
+| 7 | 外部監視で SLO 99% を計測する（サービスの選定から） | 本人 | |
+| 8 | HTML が 193 KB ある問題（`@font-face` 245 個が HTML に入っている）と、HTML に etag がない問題を調べる | 本人 | |
 
 Work と Article の frontmatter の項目は `docs/design.md` の「5. データモデル」を参照。
 
@@ -73,6 +76,20 @@ Work と Article の frontmatter の項目は `docs/design.md` の「5. デー�
 - キャッシュバスティング：HTML は毎回確認し、ほかのファイルは中身が変わったら名前（ハッシュ）を変える
 - etag と `304 Not Modified`：名前が固定のファイルは、指紋（etag）を送って変わったかを確認する
 - 設定したら出力（`dist/`、本番の `curl`）で確かめる。変えてはいけないところが変わっていないかも見る
+
+## 今日学んだこと（2026-10-16）
+
+- 「手元で動く」は本番で動く証拠にならない。Cloudflare は commit した中身だけで、まっさらな状態からビルドする（commit し忘れ、`node_modules/.astro` のキャッシュで 2 回ハマった）
+- ビルドが失敗しても、Cloudflare は前に成功したバージョンを出し続ける
+- frontmatter で値を空にすると `null` になり、スキーマで止まる
+- 自宅サーバーの設定を理解し直した：`/proc` と `/sys`、カーネルとユーザーランド、SSH と鍵（秘密鍵・公開鍵・共通鍵）、Tailscale、tmux、TLP、`logind.conf.d`（`.d` は追加設定のフォルダ）
+
+## 記事に書いた疑問（あとで調べる）
+
+- 自宅サーバーのノート PC は、バッテリーを外すべきか
+- ユーザーを追加して運用すると、何が変わるか
+- tmux の良い使い方
+- SSH の強化：パスワードでのログイン禁止、Tailscale からだけ受け付ける
 
 ## 身についてきた習慣（続けること）
 
