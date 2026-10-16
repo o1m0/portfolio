@@ -1,0 +1,55 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+// SSG なので、ビルド時に「どの URL のページを作るか」を全部列挙する
+export async function getStaticPaths() {
+  const works = await getCollection('works');
+  return works.map((work) => ({
+    params: { id: work.id },
+    props: { work },
+  }));
+}
+
+const { work } = Astro.props;
+const { Content } = await render(work);
+const { title, summary, problem, status, startedAt, stack, githubUrl, demoUrl } = work.data;
+---
+
+<BaseLayout title={`${title} | Works | Haru Oba (o1m0)`} description={summary}>
+  <article>
+    <h1>{title}</h1>
+    <p>{summary}</p>
+
+    <dl class="meta">
+      <dt>解決すること</dt>
+      <dd>{problem}</dd>
+      <dt>状態</dt>
+      <dd>{status}</dd>
+      <dt>開始日</dt>
+      <dd><time datetime={startedAt.toISOString()}>{startedAt.toLocaleDateString('ja-JP')}</time></dd>
+      <dt>技術</dt>
+      <dd>{stack.join(', ')}</dd>
+      {githubUrl && (<><dt>GitHub</dt><dd><a href={githubUrl}>{githubUrl}</a></dd></>)}
+      {demoUrl && (<><dt>デモ</dt><dd><a href={demoUrl}>{demoUrl}</a></dd></>)}
+    </dl>
+
+    <Content />
+  </article>
+</BaseLayout>
+
+<style>
+  .meta {
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    gap: 4px 16px;
+    padding: 16px;
+    border: 1px solid var(--color-border);
+  }
+  .meta dt {
+    color: var(--color-muted);
+  }
+  .meta dd {
+    margin: 0;
+  }
+</style>

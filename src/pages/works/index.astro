@@ -1,0 +1,46 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+// 並び順：order が小さい順 → 開始日が新しい順（getCollection の順番は保証されないので必ず並べる）
+const works = (await getCollection('works')).sort(
+  (a, b) =>
+    (a.data.order ?? Infinity) - (b.data.order ?? Infinity) ||
+    b.data.startedAt.valueOf() - a.data.startedAt.valueOf(),
+);
+---
+
+<BaseLayout title="Works | Haru Oba (o1m0)" description="Haru Oba が作ったもの、作っているものの一覧です。">
+  <h1>Works</h1>
+  <ul class="works">
+    {
+      works.map((work) => (
+        <li>
+          <a href={`/works/${work.id}/`}>{work.data.title}</a>
+          <span class="status">{work.data.status}</span>
+          <p>{work.data.summary}</p>
+        </li>
+      ))
+    }
+  </ul>
+</BaseLayout>
+
+<style>
+  .works {
+    list-style: none;
+    padding: 0;
+  }
+  .works li {
+    padding-block: 16px;
+    border-bottom: 1px solid var(--color-border);
+  }
+  .works p {
+    margin: 4px 0 0;
+    color: var(--color-muted);
+  }
+  .status {
+    margin-left: 8px;
+    font-size: 0.875rem;
+    color: var(--color-muted);
+  }
+</style>
