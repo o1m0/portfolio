@@ -37,28 +37,42 @@
 - [x] `src/styles/global.css`（デザイントークン）
 - [x] `src/layouts/BaseLayout.astro`（Props、slot、ヘッダー、フッター）
 - [x] `src/pages/index.astro`（ヒーロー、title、description）
+- [x] フォント：Fonts API で IBM Plex Sans JP（見出し）と IBM Plex Mono（コード）をセルフホスト
+  - 日本語フォントは約 120 個に分割されて配られる（`unicode-range`）。`preload` をつけると全部（242 個）先に読み込むので外した
+- [x] `public/_headers`：ハッシュつきのファイル（`/_astro/*`）を 1 年キャッシュ（`immutable`）。HTML と `public/` のファイルはデフォルト（毎回確認）のまま
+- [x] `CLAUDE.md`（実体は `AGENTS.md`）に分担と方針を書いた
 
 ## 残っている小さな作業
 
-- [ ] フッターの年を `new Date().getFullYear()` にする
 - [ ] `.editorconfig` を追加して、インデントをスペース 2 つにそろえる
-- [ ] `<h1>` を `Haru Oba (o1m0)` に（カッコの前にスペース）
 - [ ] 設計書に「7. デザイン」を追記する
 - [ ] 設計書 4. の理由を ADR で補強する（`docs/adr/0001-use-astro.md`、`0002-use-cloudflare-workers.md`）
-- [ ] Astro が作った `CLAUDE.md` / `AGENTS.md` を読んで、残すか決める
+- [ ] `README.md` が Astro のテンプレートのまま。書き直すか消す
 
-## 次の課題：Step 4-2 フォント
+## 分担（2026-10-16 に決定）
 
-1. Astro v7 の公式ドキュメントで Fonts API を読む
-2. `astro.config.mjs` に IBM Plex Sans JP（Google、500 と 700、`--font-heading`）を設定する
-3. `BaseLayout.astro` の `<head>` で読み込む
-4. `global.css` で `h1, h2, h3` に `var(--font-heading)` を使う
-5. 開発者ツールの Network タブで、フォントが自分のドメインから配信されているか確認する
+Astro のページ・CSS は Claude が書き、本人はインフラの判断・文章・Go に時間を使う。詳しくは `CLAUDE.md`。
 
-## その先
+## v0.1 公開までの残り
 
-Content Collections（Work と Article のスキーマ）→ Works 一覧・詳細 → Blog 一覧・詳細 → About / Skills / Contact → v0.1 公開。
+| # | 作業 | 担当 |
+|---|---|---|
+| 1 | Content Collections：Work と Article のスキーマ（`src/content.config.ts`） | Claude |
+| 2 | Works 一覧・詳細ページ | Claude |
+| 3 | Blog 一覧・詳細ページ | Claude |
+| 4 | トップに About / Skills / Works / Blog / Contact のセクション | Claude |
+| 5 | Works の中身（homestat、oshiato） | 本人 |
+| 6 | ブログ 1 記事目（自宅サーバーの構築記録） | 本人 |
+| 7 | 外部監視で SLO 99% を計測する（サービスの選定から） | 本人 |
+| 8 | HTML が 193 KB ある問題（`@font-face` 245 個が HTML に入っている）と、HTML に etag がない問題を調べる | 本人 |
+
 Work と Article の frontmatter の項目は `docs/design.md` の「5. データモデル」を参照。
+
+## 今日学んだこと（2026-10-15）
+
+- キャッシュバスティング：HTML は毎回確認し、ほかのファイルは中身が変わったら名前（ハッシュ）を変える
+- etag と `304 Not Modified`：名前が固定のファイルは、指紋（etag）を送って変わったかを確認する
+- 設定したら出力（`dist/`、本番の `curl`）で確かめる。変えてはいけないところが変わっていないかも見る
 
 ## 身についてきた習慣（続けること）
 
@@ -67,3 +81,4 @@ Work と Article の frontmatter の項目は `docs/design.md` の「5. デー�
 - `sudo` はむやみに使わない
 - デフォルトに頼らず、設定は明示する
 - 同じ情報は 1 か所にだけ書く（DRY）
+- ビルドのログの `WARN` を読む
